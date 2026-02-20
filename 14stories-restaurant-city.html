@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14 Stories | Luxury Rooftop Restaurant in London</title>
+    <meta name="description" content="14 Stories - Award-winning rooftop restaurant & bar on Fenchurch Street. Modern British cuisine with stunning city views. Book now: 020 3981 5222">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #7c3aed; --primary-dark: #6d28d9; --secondary: #fbbf24; --dark: #1e293b; --light: #f8fafc; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI line-height: 1.6;', sans-serif; color: var(--dark); background: var(--light); }
+        
+        header { background: white; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+        .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
+        .phone { font-size: 1.2rem; font-weight: 600; color: var(--secondary); text-decoration: none; }
+        
+        .hero { background: linear-gradient(135deg, var(--primary-dark) 0%, #4c1d95 100%); color: white; padding: 100px 20px; text-align: center; }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 15px; }
+        .hero p { font-size: 1.3rem; opacity: 0.9; margin-bottom: 30px; }
+        .cta { background: var(--secondary); color: var(--dark); padding: 18px 45px; border-radius: 50px; font-size: 1.2rem; font-weight: 600; text-decoration: none; display: inline-block; transition: transform 0.3s; }
+        .cta:hover { transform: scale(1.05); }
+        
+        .gallery { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .gallery h2 { text-align: center; margin-bottom: 40px; font-size: 2.2rem; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .gallery-item { border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .gallery-item img { width: 100%; height: 200px; object-fit: cover; }
+        
+        .features { background: white; padding: 60px 20px; }
+        .features-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .feature { text-align: center; padding: 20px; }
+        .feature-icon { font-size: 3rem; margin-bottom: 15px; }
+        .feature h3 { margin-bottom: 10px; color: var(--primary); }
+        
+        .menu { padding: 80px 20px; max-width: 900px; margin: 0 auto; }
+        .menu h2 { text-align: center; margin-bottom: 50px; font-size: 2.2rem; }
+        .menu-section { margin-bottom: 40px; }
+        .menu-section h3 { font-size: 1.5rem; margin-bottom: 20px; color: var(--primary); text-align: center; }
+        .menu-item { background: white; padding: 20px; margin-bottom: 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; }
+        .menu-item-name { font-weight: 600; }
+        .menu-item-price { color: var(--secondary); font-weight: 700; }
+        .menu-item-desc { font-size: 0.9rem; color: #64748b; }
+        
+        .contact-form { background: var(--dark); color: white; padding: 80px 20px; }
+        .contact-form h2 { text-align: center; margin-bottom: 30px; font-size: 2rem; }
+        .form-container { max-width: 600px; margin: 0 auto; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .form-group input, .form-group textarea, .form-group select, .form-group input[type="date"], .form-group input[type="time"] { width: 100%; padding: 15px; border-radius: 10px; border: none; font-size: 1rem; }
+        .form-group textarea { height: 120px; resize: vertical; }
+        .submit-btn { background: var(--secondary); color: var(--dark); padding: 18px 45px; border-radius: 50px; font-size: 1.2rem; font-weight: 600; border: none; cursor: pointer; width: 100%; transition: transform 0.3s; }
+        .submit-btn:hover { transform: scale(1.02); }
+        
+        .contact { background: #f1f5f9; padding: 80px 20px; text-align: center; }
+        .contact h2 { margin-bottom: 25px; font-size: 2rem; }
+        .contact-info { font-size: 1.2rem; margin-bottom: 15px; color: var(--dark); }
+        
+        .hours { background: #f1f5f9; padding: 40px 20px; text-align: center; }
+        .hours h3 { margin-bottom: 15px; color: var(--dark); }
+        
+        footer { background: #0f172a; color: #94a3b8; padding: 30px 20px; text-align: center; }
+        
+        /* Chatbot Styles */
+        .chatbot-toggle { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: var(--primary); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4); z-index: 1000; transition: transform 0.3s; }
+        .chatbot-toggle:hover { transform: scale(1.1); }
+        .chatbot-container { position: fixed; bottom: 90px; right: 20px; width: 380px; height: 500px; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); display: none; flex-direction: column; z-index: 1000; overflow: hidden; }
+        .chatbot-container.active { display: flex; }
+        .chatbot-header { background: var(--primary); color: white; padding: 15px 20px; display: flex; align-items: center; gap: 10px; }
+        .chatbot-header h3 { font-size: 1.1rem; }
+        .chatbot-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
+        .message { max-width: 85%; padding: 12px 16px; border-radius: 15px; font-size: 0.95rem; }
+        .message.bot { background: #f1f5f9; align-self: flex-start; border-bottom-left-radius: 3px; }
+        .message.user { background: var(--primary); color: white; align-self: flex-end; border-bottom-right-radius: 3px; }
+        .chatbot-input { padding: 15px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+        .chatbot-input input { flex: 1; padding: 12px; border: 1px solid #e2e8f0; border-radius: 25px; outline: none; }
+        .chatbot-input button { background: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 25px; cursor: pointer; font-weight: 600; }
+        
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .header-content { flex-direction: column; text-align: center; }
+            .chatbot-container { width: calc(100% - 40px); right: 20px; height: 400px; }
+            .menu-item { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">🍽️ 14 Stories</div>
+            <a href="tel:+442039815222" class="phone">📞 020 3981 5222</a>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <h1>Dine Above the City</h1>
+        <p>Award-winning rooftop restaurant & bar with stunning 360° views of London's skyline.</p>
+        <a href="tel:+442039815222" class="cta">Book Now: 020 3981 5222</a>
+    </section>
+    
+    <section class="gallery">
+        <h2>The Experience</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop" alt="Restaurant Interior">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop" alt="Gourmet Dish">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&h=400&fit=crop" alt="Rooftop Bar">
+            </div>
+        </div>
+    </section>
+    
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature">
+                <div class="feature-icon">🌆</div>
+                <h3>360° Views</h3>
+                <p>Stunning panoramic views of London</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🏆</div>
+                <h3>Award-Winning</h3>
+                <p>Recognised for excellence in dining</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🥂</div>
+                <h3>Private Events</h3>
+                <p>Perfect for celebrations & corporate</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⭐</div>
+                <h3>Rewards Club</h3>
+                <p>Earn points with every visit</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="menu">
+        <h2>Sample Menu</h2>
+        
+        <div class="menu-section">
+            <h3>Starters</h3>
+            <div class="menu-item">
+                <div>
+                    <div class="menu-item-name">Cured Sea Bass</div>
+                    <div class="menu-item-desc">Citrus, fennel, olive oil</div>
+                </div>
+                <div class="menu-item-price">£14</div>
+            </div>
+            <div class="menu-item">
+                <div>
+                    <div class="menu-item-name">Burrata & Heritage Tomatoes</div>
+                    <div class="menu-item-desc">Basil, aged balsamic</div>
+                </div>
+                <div class="menu-item-price">£12</div>
+            </div>
+            <div class="menu-item">
+                <div>
+                    <div class="menu-item-name">Beef Tartare</div>
+                    <div class="menu-item-desc">Capers, quail egg, truffle</div>
+                </div>
+                <div class="menu-item-price">£16</div>
+            </div>
+        </div>
+        
+        <div class="menu-section">
+            <h3>Mains</h3>
+            <div class="menu-item">
+                <div>
+                    <div class="menu-item-name">Roasted Halibut</div>
+                    <div class="menu-item-desc">Samphire, champagne velouté</div>
+                </div>
+                <div class="menu-item-price">£32</div>
+            </div>
+            <div class="menu-item">
+                <div>
+                    <div class="menu-item-name">Duck Breast</div>
+                    <div class="menu-item-desc">Parsnip, blackberries, game jus</div>
+                </div>
+                <div class="menu-item-price">£28</div>
+            </div>
+            <div class="menu-item">
+                <div>
+                    <div class="menu-item-name">Wild Mushroom Risotto</div>
+                    <div class="menu-item-desc">Truffle, parmesan, herbs (V)</div>
+                </div>
+                <div class="menu-item-price">£22</div>
+            </div>
+        </div>
+        
+        <div class="menu-section">
+            <h3>Desserts</h3>
+            <div class="menu-item">
+                <div>
+                    <div class="menu-item-name">Dark Chocolate Tart</div>
+                    <div class="menu-item-desc">Sea salt, raspberry coulis</div>
+                </div>
+                <div class="menu-item-price">£10</div>
+            </div>
+            <div class="menu-item">
+                <div>
+                    <div class="menu-item-name">Lemon Posset</div>
+                    <div class="menu-item-desc">Meringue, passion fruit</div>
+                </div>
+                <div class="menu-item-price">£9</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact-form">
+        <h2>📝 Reserve a Table</h2>
+        <div class="form-container">
+            <form id="contactForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="name" required placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" name="phone" required placeholder="07xxx xxxxxx">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label>Time</label>
+                    <input type="time" name="time" required>
+                </div>
+                <div class="form-group">
+                    <label>Number of Guests</label>
+                    <select name="guests">
+                        <option value="2">2 Guests</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4 Guests</option>
+                        <option value="5">5 Guests</option>
+                        <option value="6">6 Guests</option>
+                        <option value="more">More (call us)</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Confirm Booking</button>
+            </form>
+        </div>
+    </section>
+    
+    <section class="contact">
+        <h2>Find Us</h2>
+        <p class="contact-info">📍 14th Floor, 120 Fenchurch Street, London EC3M 5BA</p>
+        <p class="contact-info">📞 <a href="tel:+442039815222" style="color:inherit">020 3981 5222</a></p>
+        <p class="contact-info">✉️ reservations@14stories.co.uk</p>
+        <p class="contact-info">🗺️ Near Tower Hill & Monument stations</p>
+    </section>
+    
+    <section class="hours">
+        <h3>🕐 Opening Hours</h3>
+        <p>Monday - Friday: 12:00 PM - 3:00 PM & 5:30 PM - 11:00 PM</p>
+        <p>Saturday: 12:00 PM - 11:00 PM</p>
+        <p>Sunday: 12:00 PM - 10:00 PM</p>
+    </section>
+    
+    <footer>
+        <p>🍽️ 14 Stories | Award-Winning Rooftop Dining | Private Events Available</p>
+    </footer>
+    
+    <!-- Chatbot -->
+    <div class="chatbot-toggle" onclick="toggleChatbot()">💬</div>
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-header">
+            <span>🤖</span>
+            <h3>AI Concierge</h3>
+        </div>
+        <div class="chatbot-messages" id="chatMessages">
+            <div class="message bot">Welcome to 14 Stories! I'm your AI concierge. How can I help you today?</div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKey(event)">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    
+    <script>
+        function toggleChatbot() {
+            document.getElementById('chatbot').classList.toggle('active');
+        }
+        
+        function handleChatKey(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+        
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (!message) return;
+            
+            const messagesDiv = document.getElementById('chatMessages');
+            messagesDiv.innerHTML += '<div class="message user">' + message + '</div>';
+            input.value = '';
+            
+            setTimeout(() => {
+                let response = getBotResponse(message.toLowerCase());
+                messagesDiv.innerHTML += '<div class="message bot">' + response + '</div>';
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }, 1000);
+        }
+        
+        function getBotResponse(msg) {
+            if (msg.includes('book') || msg.includes('reserve') || msg.includes('table')) {
+                return 'Book your table by calling 020 3981 5222 or fill out the form above!';
+            }
+            if (msg.includes('menu') || msg.includes('price') || msg.includes('cost')) {
+                return 'Our menu features modern British cuisine. Starters £12-£16, Mains £22-£32, Desserts £9-£10. View our full menu on our website!';
+            }
+            if (msg.includes('view') || msg.includes('location') || msg.includes('where')) {
+                return 'We\'re on the 14th floor at 120 Fenchurch Street, EC3M 5BA. Stunning 360° views of London!';
+            }
+            if (msg.includes('hour') || msg.includes('open')) {
+                return 'Open Mon-Fri 12-3pm & 5:30-11pm, Sat 12-11pm, Sun 12-10pm!';
+            }
+            if (msg.includes('private') || msg.includes('event') || msg.includes('party')) {
+                return 'We host private events and celebrations. Call 020 3981 5222 to discuss your requirements.';
+            }
+            if (msg.includes('vegetarian') || msg.includes('vegan')) {
+                return 'We offer vegetarian and vegan options. Our Wild Mushroom Risotto is a popular choice!';
+            }
+            if (msg.includes('dress') || msg.includes('wear')) {
+                return 'Smart casual dress code is recommended. We welcome all guests looking for a premium dining experience.';
+            }
+            if (msg.includes('parking')) {
+                return 'There are several car parks nearby. We recommend Q-Park Tower Hill or NCP Minories.';
+            }
+            if (msg.includes('thank')) {
+                return 'You\'re welcome! We look forward to welcoming you to 14 Stories soon!';
+            }
+            return 'Thanks for reaching out! Call 020 3981 5222 to book or reserve through the form above.';
+        }
+        
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you! We\'ll confirm your reservation shortly.');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>

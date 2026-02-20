@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dentistry for You | NHS & Private Dentist in Forest Hill</title>
+    <meta name="description" content="Dentistry for You - Family dental practice in Forest Hill, South London. NHS and private dentistry. Call 020 8699 1234">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #06b6d4; --primary-dark: #0891b2; --secondary: #f97316; --dark: #1e293b; --light: #f8fafc; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: var(--dark); background: var(--light); }
+        
+        header { background: white; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+        .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
+        .phone { font-size: 1.2rem; font-weight: 600; color: var(--secondary); text-decoration: none; }
+        
+        .hero { background: linear-gradient(135deg, var(--primary-dark) 0%, #0891b2 100%); color: white; padding: 100px 20px; text-align: center; }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 15px; }
+        .hero p { font-size: 1.3rem; opacity: 0.9; margin-bottom: 30px; }
+        .cta { background: var(--secondary); color: white; padding: 18px 45px; border-radius: 50px; font-size: 1.2rem; font-weight: 600; text-decoration: none; display: inline-block; transition: transform 0.3s; }
+        .cta:hover { transform: scale(1.05); }
+        
+        .gallery { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .gallery h2 { text-align: center; margin-bottom: 40px; font-size: 2.2rem; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .gallery-item { border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .gallery-item img { width: 100%; height: 200px; object-fit: cover; }
+        
+        .features { background: white; padding: 60px 20px; }
+        .features-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .feature { text-align: center; padding: 20px; }
+        .feature-icon { font-size: 3rem; margin-bottom: 15px; }
+        .feature h3 { margin-bottom: 10px; color: var(--primary); }
+        
+        .services { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
+        .services h2 { text-align: center; margin-bottom: 50px; font-size: 2.2rem; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .service-card { background: white; padding: 35px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s; }
+        .service-card:hover { transform: translateY(-5px); }
+        .service-card h3 { color: var(--primary); margin-bottom: 12px; font-size: 1.3rem; }
+        .price { font-size: 1.1rem; font-weight: 600; color: var(--secondary); margin-top: 10px; }
+        
+        .contact-form { background: var(--dark); color: white; padding: 80px 20px; }
+        .contact-form h2 { text-align: center; margin-bottom: 30px; font-size: 2rem; }
+        .form-container { max-width: 600px; margin: 0 auto; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 15px; border-radius: 10px; border: none; font-size: 1rem; }
+        .form-group textarea { height: 120px; resize: vertical; }
+        .submit-btn { background: var(--secondary); color: white; padding: 18px 45px; border-radius: 50px; font-size: 1.2rem; font-weight: 600; border: none; cursor: pointer; width: 100%; transition: transform 0.3s; }
+        .submit-btn:hover { transform: scale(1.02); }
+        
+        .contact { background: #f1f5f9; padding: 80px 20px; text-align: center; }
+        .contact h2 { margin-bottom: 25px; font-size: 2rem; }
+        .contact-info { font-size: 1.2rem; margin-bottom: 15px; color: var(--dark); }
+        
+        .hours { background: #f1f5f9; padding: 40px 20px; text-align: center; }
+        .hours h3 { margin-bottom: 15px; color: var(--dark); }
+        
+        footer { background: #0f172a; color: #94a3b8; padding: 30px 20px; text-align: center; }
+        
+        /* Chatbot Styles */
+        .chatbot-toggle { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: var(--primary); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4); z-index: 1000; transition: transform 0.3s; }
+        .chatbot-toggle:hover { transform: scale(1.1); }
+        .chatbot-container { position: fixed; bottom: 90px; right: 20px; width: 380px; height: 500px; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); display: none; flex-direction: column; z-index: 1000; overflow: hidden; }
+        .chatbot-container.active { display: flex; }
+        .chatbot-header { background: var(--primary); color: white; padding: 15px 20px; display: flex; align-items: center; gap: 10px; }
+        .chatbot-header h3 { font-size: 1.1rem; }
+        .chatbot-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
+        .message { max-width: 85%; padding: 12px 16px; border-radius: 15px; font-size: 0.95rem; }
+        .message.bot { background: #f1f5f9; align-self: flex-start; border-bottom-left-radius: 3px; }
+        .message.user { background: var(--primary); color: white; align-self: flex-end; border-bottom-right-radius: 3px; }
+        .chatbot-input { padding: 15px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+        .chatbot-input input { flex: 1; padding: 12px; border: 1px solid #e2e8f0; border-radius: 25px; outline: none; }
+        .chatbot-input button { background: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 25px; cursor: pointer; font-weight: 600; }
+        
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .header-content { flex-direction: column; text-align: center; }
+            .chatbot-container { width: calc(100% - 40px); right: 20px; height: 400px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">🦷 Dentistry for You</div>
+            <a href="tel:+442086991234" class="phone">📞 020 8699 1234</a>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <h1>Family Dental Care in South London</h1>
+        <p>NHS and private dentistry for the whole family. Friendly team, modern equipment, comfortable environment.</p>
+        <a href="tel:+442086991234" class="cta">Call Now: 020 8699 1234</a>
+    </section>
+    
+    <section class="gallery">
+        <h2>Our Practice</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&h=400&fit=crop" alt="Dental Practice">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&h=400&fit=crop" alt="Modern Surgery">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&h=400&fit=crop" alt="Smile">
+            </div>
+        </div>
+    </section>
+    
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature">
+                <div class="feature-icon">🏥</div>
+                <h3>NHS & Private</h3>
+                <p>Choice of NHS or private treatment</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">👨‍👩‍👧‍👦</div>
+                <h3>Family Friendly</h3>
+                <p>Welcoming patients of all ages</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🚌</div>
+                <h3>Easy Access</h3>
+                <p>Free parking, ground floor access</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💷</div>
+                <h3>Affordable</h3>
+                <p>Competitive pricing, payment plans</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="services">
+        <h2>Our Services & Prices</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>🦷 NHS Dentistry</h3>
+                <p>Full NHS dental treatment available. Band 1, 2, and 3 treatments.</p>
+                <p class="price">From £26.80 (NHS Band 1)</p>
+            </div>
+            <div class="service-card">
+                <h3>✨ Private Dentistry</h3>
+                <p>Wide range of private treatments with flexible appointment times.</p>
+                <p class="price">Check-up from £55</p>
+            </div>
+            <div class="service-card">
+                <h3>🦴 Dental Implants</h3>
+                <p>Permanent solution for missing teeth. Consultation available.</p>
+                <p class="price">From £2,200</p>
+            </div>
+            <div class="service-card">
+                <h3>💎 Veneers</h3>
+                <p>Porcelain and composite veneers for a perfect smile.</p>
+                <p class="price">From £450 per tooth</p>
+            </div>
+            <div class="service-card">
+                <h3>🩺 Hygiene Services</h3>
+                <p>Professional cleaning, scaling, and polishing.</p>
+                <p class="price">From £65</p>
+            </div>
+            <div class="service-card">
+                <h3>😬 Emergency Care</h3>
+                <p>Same-day appointments for dental emergencies and pain relief.</p>
+                <p class="price">Call for availability</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact-form">
+        <h2>📝 Register or Book</h2>
+        <div class="form-container">
+            <form id="contactForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="name" required placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" name="phone" required placeholder="07xxx xxxxxx">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Interest</label>
+                    <select name="service">
+                        <option value="">Select...</option>
+                        <option value="nhs">NHS Registration</option>
+                        <option value="private">Private Treatment</option>
+                        <option value="checkup">Check-up</option>
+                        <option value="whitening">Whitening/Veneers</option>
+                        <option value="implant">Implants</option>
+                        <option value="emergency">Emergency</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea name="message" placeholder="Tell us about your dental needs..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    </section>
+    
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <p class="contact-info">📍 3 Dartmouth Road, Forest Hill, London SE23 3HN</p>
+        <p class="contact-info">📞 <a href="tel:+442086991234" style="color:inherit">020 8699 1234</a></p>
+        <p class="contact-info">📞 Alt: 020 8699 9797</p>
+        <p class="contact-info">✉️ info@dentistryforyou.co.uk</p>
+        <p class="contact-info">🗺️ Serving Forest Hill, Sydenham & South London</p>
+    </section>
+    
+    <section class="hours">
+        <h3>🕐 Opening Hours</h3>
+        <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+        <p>Saturday: 9:00 AM - 1:00 PM</p>
+        <p>Emergency appointments available</p>
+    </section>
+    
+    <footer>
+        <p>🦷 Dentistry for You | GDC Registered | NHS Contracted</p>
+    </footer>
+    
+    <!-- Chatbot -->
+    <div class="chatbot-toggle" onclick="toggleChatbot()">💬</div>
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-header">
+            <span>🤖</span>
+            <h3>AI Dental Assistant</h3>
+        </div>
+        <div class="chatbot-messages" id="chatMessages">
+            <div class="message bot">Hi! I'm the AI assistant for Dentistry for You. How can I help you today?</div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKey(event)">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    
+    <script>
+        function toggleChatbot() {
+            document.getElementById('chatbot').classList.toggle('active');
+        }
+        
+        function handleChatKey(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+        
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (!message) return;
+            
+            const messagesDiv = document.getElementById('chatMessages');
+            messagesDiv.innerHTML += '<div class="message user">' + message + '</div>';
+            input.value = '';
+            
+            setTimeout(() => {
+                let response = getBotResponse(message.toLowerCase());
+                messagesDiv.innerHTML += '<div class="message bot">' + response + '</div>';
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }, 1000);
+        }
+        
+        function getBotResponse(msg) {
+            if (msg.includes('nhs') || msg.includes('register')) {
+                return 'We accept NHS patients! NHS treatments start from £26.80 (Band 1). Call 020 8699 1234 to register.';
+            }
+            if (msg.includes('book') || msg.includes('appointment')) {
+                return 'Book by calling 020 8699 1234. We offer both NHS and private appointments!';
+            }
+            if (msg.includes('price') || msg.includes('cost')) {
+                return 'NHS: Band 1 £26.80, Band 2 £73.50, Band 3 £319.10. Private check-ups from £55. Call for details!';
+            }
+            if (msg.includes('implant')) {
+                return 'Dental implants from £2,200. Book a consultation to discuss your options.';
+            }
+            if (msg.includes('hour') || msg.includes('open')) {
+                return 'Open Mon-Fri 9am-6pm, Sat 9am-1pm. Emergency appointments available!';
+            }
+            if (msg.includes('address') || msg.includes('where')) {
+                return 'We\'re at 3 Dartmouth Road, Forest Hill, London SE23 3HN. Free parking available!';
+            }
+            if (msg.includes('emergency') || msg.includes('pain')) {
+                return 'For emergencies, call 020 8699 1234. We aim to see emergency patients same-day.';
+            }
+            if (msg.includes('thank')) {
+                return 'You\'re welcome! We look forward to seeing you soon.';
+            }
+            return 'Thanks for reaching out! Call 020 8699 1234 to book your appointment.';
+        }
+        
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you! We\'ll contact you shortly.');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>

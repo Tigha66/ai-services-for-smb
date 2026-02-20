@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Plumber Man | Professional Plumbers in West London</title>
+    <meta name="description" content="My Plumber Man - Your local West London plumber. Emergency plumbing, boiler repairs, heating services. Call 020 7381 3898">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #10b981; --primary-dark: #059669; --secondary: #f97316; --dark: #1e293b; --light: #f8fafc; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: var(--dark); background: var(--light); }
+        
+        header { background: white; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+        .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
+        .phone { font-size: 1.2rem; font-weight: 600; color: var(--secondary); text-decoration: none; }
+        
+        .hero { background: linear-gradient(135deg, var(--dark) 0%, #334155 100%); color: white; padding: 100px 20px; text-align: center; }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 15px; }
+        .hero p { font-size: 1.3rem; opacity: 0.9; margin-bottom: 30px; }
+        .cta { background: var(--secondary); color: white; padding: 18px 45px; border-radius: 50px; font-size: 1.2rem; font-weight: 600; text-decoration: none; display: inline-block; transition: transform 0.3s; }
+        .cta:hover { transform: scale(1.05); }
+        
+        .gallery { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .gallery h2 { text-align: center; margin-bottom: 40px; font-size: 2.2rem; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .gallery-item { border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .gallery-item img { width: 100%; height: 200px; object-fit: cover; }
+        
+        .features { background: white; padding: 60px 20px; }
+        .features-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .feature { text-align: center; padding: 20px; }
+        .feature-icon { font-size: 3rem; margin-bottom: 15px; }
+        .feature h3 { margin-bottom: 10px; color: var(--primary); }
+        
+        .services { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
+        .services h2 { text-align: center; margin-bottom: 50px; font-size: 2.2rem; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .service-card { background: white; padding: 35px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s; }
+        .service-card:hover { transform: translateY(-5px); }
+        .service-card h3 { color: var(--primary); margin-bottom: 12px; font-size: 1.3rem; }
+        
+        .contact-form { background: var(--dark); color: white; padding: 80px 20px; }
+        .contact-form h2 { text-align: center; margin-bottom: 30px; font-size: 2rem; }
+        .form-container { max-width: 600px; margin: 0 auto; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 15px; border-radius: 10px; border: none; font-size: 1rem; }
+        .form-group textarea { height: 120px; resize: vertical; }
+        .submit-btn { background: var(--secondary); color: white; padding: 18px 45px; border-radius: 50px; font-size: 1.2rem; font-weight: 600; border: none; cursor: pointer; width: 100%; transition: transform 0.3s; }
+        .submit-btn:hover { transform: scale(1.02); }
+        
+        .contact { background: #f1f5f9; padding: 80px 20px; text-align: center; }
+        .contact h2 { margin-bottom: 25px; font-size: 2rem; }
+        .contact-info { font-size: 1.2rem; margin-bottom: 15px; color: var(--dark); }
+        
+        .hours { background: #f1f5f9; padding: 40px 20px; text-align: center; }
+        .hours h3 { margin-bottom: 15px; color: var(--dark); }
+        
+        footer { background: #0f172a; color: #94a3b8; padding: 30px 20px; text-align: center; }
+        
+        /* Chatbot Styles */
+        .chatbot-toggle { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: var(--primary); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4); z-index: 1000; transition: transform 0.3s; }
+        .chatbot-toggle:hover { transform: scale(1.1); }
+        .chatbot-container { position: fixed; bottom: 90px; right: 20px; width: 380px; height: 500px; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); display: none; flex-direction: column; z-index: 1000; overflow: hidden; }
+        .chatbot-container.active { display: flex; }
+        .chatbot-header { background: var(--primary); color: white; padding: 15px 20px; display: flex; align-items: center; gap: 10px; }
+        .chatbot-header h3 { font-size: 1.1rem; }
+        .chatbot-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
+        .message { max-width: 85%; padding: 12px 16px; border-radius: 15px; font-size: 0.95rem; }
+        .message.bot { background: #f1f5f9; align-self: flex-start; border-bottom-left-radius: 3px; }
+        .message.user { background: var(--primary); color: white; align-self: flex-end; border-bottom-right-radius: 3px; }
+        .chatbot-input { padding: 15px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+        .chatbot-input input { flex: 1; padding: 12px; border: 1px solid #e2e8f0; border-radius: 25px; outline: none; }
+        .chatbot-input button { background: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 25px; cursor: pointer; font-weight: 600; }
+        
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .header-content { flex-direction: column; text-align: center; }
+            .chatbot-container { width: calc(100% - 40px); right: 20px; height: 400px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">🔧 My Plumber Man</div>
+            <a href="tel:+442073813898" class="phone">📞 020 7381 3898</a>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <h1>Your Local West London Plumber</h1>
+        <p>Professional plumbing and heating services in Fulham, Chelsea, and West London. Gas Safe registered engineers.</p>
+        <a href="tel:+442073813898" class="cta">Call Now: 020 7381 3898</a>
+    </section>
+    
+    <section class="gallery">
+        <h2>Our Work</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=600&h=400&fit=crop" alt="Plumbing Services">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&h=400&fit=crop" alt="Boiler Installation">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=400&fit=crop" alt="Central Heating">
+            </div>
+        </div>
+    </section>
+    
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature">
+                <div class="feature-icon">⏰</div>
+                <h3>Same Day Service</h3>
+                <p>Fast response across West London</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">✓</div>
+                <h3>Gas Safe Registered</h3>
+                <p>Certified heating engineers</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🏆</div>
+                <h3>Local Experts</h3>
+                <p>Serving West London for 15+ years</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💰</div>
+                <h3>Fixed Prices</h3>
+                <p>No hidden costs, free quotes</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>🔥 Boiler Installation</h3>
+                <p>New boiler installations. Worcester Bosch & Vaillant specialists. From £2,200.</p>
+            </div>
+            <div class="service-card">
+                <h3>🔧 Boiler Repairs</h3>
+                <p>Fast boiler repairs all makes. No call-out fee for existing customers.</p>
+            </div>
+            <div class="service-card">
+                <h3>🌡️ Central Heating</h3>
+                <p>New radiator installations, system upgrades. From £180 per radiator.</p>
+            </div>
+            <div class="service-card">
+                <h3>🚿 Emergency Plumbing</h3>
+                <p>24/7 emergency call-out. Leaks, burst pipes, blocked drains.</p>
+            </div>
+            <div class="service-card">
+                <h3>🛁 Bathroom Suites</h3>
+                <p>Complete bathroom installations. Quality fittings at competitive prices.</p>
+            </div>
+            <div class="service-card">
+                <h3>💧 Unvented Cylinders</h3>
+                <p>Hot water cylinder installation and maintenance. Mains pressure systems.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact-form">
+        <h2>📝 Request a Callback</h2>
+        <div class="form-container">
+            <form id="contactForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="name" required placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" name="phone" required placeholder="07xxx xxxxxx">
+                </div>
+                <div class="form-group">
+                    <label>Service Type</label>
+                    <select name="service">
+                        <option value="">Select a service...</option>
+                        <option value="boiler-installation">Boiler Installation</option>
+                        <option value="boiler-repair">Boiler Repair</option>
+                        <option value="central-heating">Central Heating</option>
+                        <option value="plumbing">Emergency Plumbing</option>
+                        <option value="bathroom">Bathroom Installation</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea name="message" placeholder="Tell us about your requirements..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Request Callback</button>
+            </form>
+        </div>
+    </section>
+    
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <p class="contact-info">📍 215 Munster Road, Fulham, London SW6 6BU</p>
+        <p class="contact-info">📞 <a href="tel:+442073813898" style="color:inherit">020 7381 3898</a></p>
+        <p class="contact-info">✉️ enquiries@myplumberman.co.uk</p>
+        <p class="contact-info">🗺️ Serving Fulham, Chelsea, Hammersmith & West London</p>
+    </section>
+    
+    <section class="hours">
+        <h3>🕐 Service Hours</h3>
+        <p>Monday - Friday: 7:00 AM - 7:00 PM</p>
+        <p>Saturday: 8:00 AM - 5:00 PM</p>
+        <p>24/7 Emergency Call-out Available</p>
+    </section>
+    
+    <footer>
+        <p>🔧 My Plumber Man Ltd | Gas Safe Registered | Fully Insured</p>
+    </footer>
+    
+    <!-- Chatbot -->
+    <div class="chatbot-toggle" onclick="toggleChatbot()">💬</div>
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-header">
+            <span>🤖</span>
+            <h3>AI Assistant</h3>
+        </div>
+        <div class="chatbot-messages" id="chatMessages">
+            <div class="message bot">Hi! I'm the AI assistant for My Plumber Man. How can I help you today?</div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKey(event)">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    
+    <script>
+        function toggleChatbot() {
+            document.getElementById('chatbot').classList.toggle('active');
+        }
+        
+        function handleChatKey(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+        
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (!message) return;
+            
+            const messagesDiv = document.getElementById('chatMessages');
+            messagesDiv.innerHTML += '<div class="message user">' + message + '</div>';
+            input.value = '';
+            
+            setTimeout(() => {
+                let response = getBotResponse(message.toLowerCase());
+                messagesDiv.innerHTML += '<div class="message bot">' + response + '</div>';
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }, 1000);
+        }
+        
+        function getBotResponse(msg) {
+            if (msg.includes('call') || msg.includes('phone')) {
+                return 'Call us on 020 7381 3898. We offer same-day service across West London!';
+            }
+            if (msg.includes('boiler')) {
+                return 'We install and repair boilers. Worcester Bosch & Vaillant specialists. New boilers from £2,200.';
+            }
+            if (msg.includes('price') || msg.includes('cost') || msg.includes('quote')) {
+                return 'We offer free, no-obligation quotes. Boiler installations from £2,200. Call 020 7381 3898.';
+            }
+            if (msg.includes('hour') || msg.includes('open')) {
+                return 'Open Mon-Fri 7am-7pm, Sat 8am-5pm. 24/7 emergency call-out available!';
+            }
+            if (msg.includes('address') || msg.includes('where')) {
+                return 'We\'re at 215 Munster Road, Fulham, London SW6 6BU. Serving all of West London!';
+            }
+            if (msg.includes('emergency') || msg.includes('leak')) {
+                return 'For emergencies, call 020 7381 3898. We offer 24/7 emergency call-out across West London.';
+            }
+            if (msg.includes('thank')) {
+                return 'You\'re welcome! Let us know if you need anything else.';
+            }
+            return 'Thanks for reaching out! Call 020 7381 3898 or fill out the form for a free quote.';
+        }
+        
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you! We\'ll call you shortly. For urgent matters, call 020 7381 3898.');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
