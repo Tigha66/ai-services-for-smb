@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed's Plumbing | Emergency Plumber in Leytonstone & East London</title>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0D7377;
+            --secondary: #14FFEC;
+            --dark: #0a0f1a;
+            --light: #f0fdfa;
+            --accent: #00d4aa;
+            --card-bg: rgba(13, 115, 119, 0.08);
+            --gradient: linear-gradient(135deg, #0D7377 0%, #14FFEC 100%);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark);
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .bg-pattern {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(13, 115, 119, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(20, 255, 236, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(0, 212, 170, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        /* Header */
+        header {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 15, 26, 0.9);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(20, 255, 236, 0.1);
+        }
+        
+        .logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover { color: var(--secondary); }
+        
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            padding: 8rem 5% 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-content h1 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #999;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: var(--gradient);
+            color: var(--dark);
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 170, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+        
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+        }
+        
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(20, 255, 236, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(10px);
+            transform: perspective(1000px) rotateY(0deg);
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover {
+            transform: perspective(1000px) rotateY(5deg);
+        }
+        
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-card .price {
+            font-family: 'Space Mono', monospace;
+            color: var(--accent);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        /* Services Section */
+        .section {
+            padding: 5rem 5%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title h2 span {
+            color: var(--secondary);
+        }
+        
+        .section-title p {
+            color: #888;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        /* AI Chatbot Section */
+        .chatbot-section {
+            background: linear-gradient(180deg, transparent, rgba(13, 115, 119, 0.1), transparent);
+            padding: 5rem 5%;
+        }
+        
+        .chatbot-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(10, 15, 26, 0.9);
+            border: 1px solid rgba(20, 255, 236, 0.2);
+            border-radius: 24px;
+            overflow: hidden;
+        }
+        
+        .chatbot-header {
+            background: var(--gradient);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .chatbot-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .chatbot-header h3 {
+            color: var(--dark);
+            font-weight: 700;
+        }
+        
+        .chatbot-status {
+            color: rgba(0,0,0,0.7);
+            font-size: 0.9rem;
+        }
+        
+        .chat-messages {
+            height: 400px;
+            overflow-y: auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 1rem 1.5rem;
+            border-radius: 18px;
+            font-size: 0.95rem;
+        }
+        
+        .message.bot {
+            background: rgba(13, 115, 119, 0.2);
+            border: 1px solid rgba(20, 255, 236, 0.2);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        
+        .message.user {
+            background: var(--gradient);
+            color: var(--dark);
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .chat-input-area {
+            padding: 1.5rem 2rem;
+            border-top: 1px solid rgba(20, 255, 236, 0.1);
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .chat-input-area input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(20, 255, 236, 0.2);
+            border-radius: 50px;
+            color: #fff;
+            font-size: 1rem;
+        }
+        
+        .chat-input-area input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        /* Voice Receptionist */
+        .voice-section {
+            background: var(--card-bg);
+            border: 1px solid rgba(20, 255, 236, 0.2);
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .voice-visual {
+            width: 120px;
+            height: 120px;
+            background: var(--gradient);
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.4); }
+            50% { box-shadow: 0 0 0 20px rgba(0, 212, 170, 0); }
+        }
+        
+        .voice-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .voice-feature {
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+        }
+        
+        .voice-feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Booking Section */
+        .booking-section {
+            background: linear-gradient(135deg, rgba(13, 115, 119, 0.1), rgba(0, 212, 170, 0.05));
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 2rem 0;
+        }
+        
+        .booking-form {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(20, 255, 236, 0.2);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(20, 255, 236, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .contact-card h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-card p {
+            color: #888;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(10, 15, 26, 0.95);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(20, 255, 236, 0.1);
+            margin-top: 4rem;
+        }
+        
+        footer p {
+            color: #666;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .cta-group {
+                justify-content: center;
+            }
+            
+            nav { display: none; }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+    
+    <header>
+        <div class="logo">
+            <div class="logo-icon">🔧</div>
+            Ahmed's Plumbing
+        </div>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#chatbot">AI Assistant</a>
+            <a href="#booking">Book Now</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Trusted <span>Emergency Plumber</span> in East London</h1>
+            <p>Fast, reliable plumbing services in Leytonstone, Walthamstow & surrounding areas. Available 24/7 for emergencies. Gas Safe registered.</p>
+            <div class="cta-group">
+                <a href="tel:020 8539 2847" class="btn btn-primary">📞 Call Now: 020 8539 2847</a>
+                <a href="#booking" class="btn btn-outline">Book Online</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="service-card" data-tilt>
+                <div class="service-icon">🚿</div>
+                <h3>Emergency Plumbing</h3>
+                <p>Fast response for burst pipes, leaks & blockages</p>
+                <div class="price">From £75/hr</div>
+            </div>
+            <div class="service-card" data-tilt>
+                <div class="service-icon">🔥</div>
+                <h3>Boiler Installation & Repair</h3>
+                <p>Gas Safe certified boiler services</p>
+                <div class="price">From £150</div>
+            </div>
+            <div class="service-card" data-tilt>
+                <div class="service-icon">🚽</div>
+                <h3>Bathroom Installations</h3>
+                <p>Full bathroom refits & upgrades</p>
+                <div class="price">From £500</div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="services" class="section">
+        <div class="section-title">
+            <h2>Our <span>Services</span> & Pricing</h2>
+            <p>Transparent pricing with no hidden costs. All work guaranteed.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🚰</div>
+                <h3>Leak Detection & Repair</h3>
+                <p>Fast identification and repair of all water leaks using advanced equipment</p>
+                <div class="price">£85 - £200</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚿</div>
+                <h3>Emergency Callout</h3>
+                <p>24/7 emergency plumbing response for urgent problems</p>
+                <div class="price">£75/hr + parts</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔥</div>
+                <h3>Boiler Services</h3>
+                <p>Installation, repair & annual servicing of all boiler brands</p>
+                <div class="price">£120 - £800</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚽</div>
+                <h3>Drain Unblocking</h3>
+                <p>Quick clearance of blocked sinks, toilets & drains</p>
+                <div class="price">£60 - £150</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛁</div>
+                <h3>Bathroom Refurbishment</h3>
+                <p>Complete bathroom design and installation service</p>
+                <div class="price">£2,500 - £6,000</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💧</div>
+                <h3>Central Heating</h3>
+                <p>Radiator installation, repairs & system upgrades</p>
+                <div class="price">£200 - £2,000</div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="chatbot" class="chatbot-section">
+        <div class="section-title">
+            <h2>AI <span>Plumbing Assistant</span></h2>
+            <p>Get instant answers to your plumbing questions, 24/7</p>
+        </div>
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">🤖</div>
+                <div>
+                    <h3>Ahmed's AI Assistant</h3>
+                    <div class="chatbot-status">● Online & Ready to Help</div>
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">Hello! I'm Ahmed's AI assistant. I can help you with:</div>
+                <div class="message bot">• Emergency plumbing advice<br>• Service pricing & bookings<br>• Boiler & heating queries<br>• General plumbing questions</div>
+                <div class="message bot">How can I help you today?</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Type your question here...">
+                <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="section-title">
+            <h2>AI <span>Voice Receptionist</span></h2>
+            <p>Professional 24/7 phone answering service for your business</p>
+        </div>
+        <div class="voice-section">
+            <div class="voice-visual">📞</div>
+            <h3>Never Miss a Call Again</h3>
+            <p>Our AI voice receptionist answers calls professionally, books appointments, and handles inquiries</p>
+            <div class="voice-features">
+                <div class="voice-feature">
+                    <div class="voice-feature-icon">⏰</div>
+                    <h4>24/7 Availability</h4>
+                    <p>Always there to answer, even outside hours</p>
+                </div>
+                <div class="voice-feature">
+                    <div class="voice-feature-icon">📅</div>
+                    <h4>Smart Booking</h4>
+                    <p>Automatically schedules appointments</p>
+                </div>
+                <div class="voice-feature">
+                    <div class="voice-feature-icon">⚡</div>
+                    <h4>Instant Response</h4>
+                    <p>No waiting, answers immediately</p>
+                </div>
+                <div class="voice-feature">
+                    <div class="voice-feature-icon">💾</div>
+                    <h4>Lead Capture</h4>
+                    <p>Collects caller details for follow-up</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="booking" class="section">
+        <div class="section-title">
+            <h2>Book a <span>Plumber</span></h2>
+            <p>Schedule your service online - we'll confirm within 2 hours</p>
+        </div>
+        <div class="booking-section">
+            <form class="booking-form" onsubmit="handleBooking(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Name *</label>
+                        <input type="text" name="name" required placeholder="John Smith">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" name="phone" required placeholder="07xxx xxxxxx">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" placeholder="john@example.com">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Service Required *</label>
+                        <select name="service" required>
+                            <option value="">Select a service...</option>
+                            <option value="emergency">Emergency Plumbing</option>
+                            <option value="leak">Leak Detection/Repair</option>
+                            <option value="boiler">Boiler Service/Repair</option>
+                            <option value="drain">Drain Unblocking</option>
+                            <option value="bathroom">Bathroom Installation</option>
+                            <option value="heating">Central Heating</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Date *</label>
+                        <input type="date" name="date" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Describe the Problem</label>
+                    <textarea name="message" rows="4" placeholder="Please describe your plumbing issue..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Book Now</button>
+            </form>
+        </div>
+    </section>
+    
+    <section id="contact" class="section">
+        <div class="section-title">
+            <h2>Get in <span>Touch</span></h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>Address</h3>
+                <p>78 Church Lane<br>Leytonstone<br>London E11 1HG</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3>Phone</h3>
+                <p>020 8539 2847<br>24/7 Emergency: 07958 472836</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3>Email</h3>
+                <p>info@ahmedsplumbing.co.uk</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">🕐</div>
+                <h3>Hours</h3>
+                <p>Mon-Fri: 7am - 7pm<br>Sat: 8am - 5pm<br>24/7 Emergency</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
+            <div class="logo-icon">🔧</div>
+            Ahmed's Plumbing
+        </div>
+        <p>Gas Safe Registered | £5M Liability Insured | Family Business Since 1995</p>
+        <p style="margin-top: 1rem;">© 2026 Ahmed's Plumbing. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Initialize tilt effect
+        document.querySelectorAll('[data-tilt]').forEach(el => {
+            VanillaTilt.init(el, {
+                max: 10,
+                speed: 400,
+                glare: true,
+                "max-glare": 0.3
+            });
+        });
+        
+        // Chatbot functionality
+        const chatMessages = document.getElementById('chatMessages');
+        
+        const botResponses = {
+            'emergency': "For plumbing emergencies, we offer 24/7 rapid response. Call us immediately on 020 8539 2847 or 07958 472836. Our average response time in East London is 30-45 minutes.",
+            'leak': "We specialize in leak detection using advanced thermal imaging. Our leak repair service starts from £85 depending on complexity. We aim to visit same-day for urgent leaks.",
+            'boiler': "We are Gas Safe registered for all boiler work. Services start from £120, repairs from £85/hr, and new installations from £1,500. We work with all major brands.",
+            'drain': "For blocked drains, we use CCTV camera inspection and high-pressure water jetting. Prices range from £60-£150 depending on severity. We clear most blockages same-day.",
+            'bathroom': "We offer full bathroom installations from £2,500-£6,000 depending on size and specifications. This includes design, plumbing, tiling, and finishing. Typical timeline: 5-10 days.",
+            'price': "Our pricing is transparent: Emergency callout from £75/hr, leak repairs from £85, boiler services from £120, drain clearing from £60. We provide free quotes and no hidden fees.",
+            'booking': "You can book online through our form, or call us directly on 020 8539 2847. We confirm all bookings within 2 hours during business hours.",
+            'hours': "We're open Monday-Friday 7am-7pm, Saturday 8am-5pm. However, we operate 24/7 for genuine emergencies.",
+            'area': "We cover all of East London including Leytonstone, Walthamstow, Leyton, Chingford, Woodford, Snaresbrook, and surrounding areas."
+        };
+        
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim().toLowerCase();
+            
+            if (!message) return;
+            
+            // Add user message
+            addMessage(input.value, 'user');
+            input.value = '';
+            
+            // Find relevant response
+            let response = "Thank you for your message! For specific pricing or to book a visit, please call us on 020 8539 2847 or use our online booking form.";
+            
+            for (const [key, value] of Object.entries(botResponses)) {
+                if (message.includes(key)) {
+                    response = value;
+                    break;
+                }
+            }
+            
+            // Add bot response with delay
+            setTimeout(() => {
+                addMessage(response, 'bot');
+            }, 500);
+        }
+        
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            div.className = `message ${sender}`;
+            div.innerHTML = text;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        // Handle booking
+        function handleBooking(e) {
+            e.preventDefault();
+            alert('Thank you! Your booking request has been received. We will contact you within 2 hours to confirm.');
+        }
+        
+        // Allow Enter key to send
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
+</body>
+</html>

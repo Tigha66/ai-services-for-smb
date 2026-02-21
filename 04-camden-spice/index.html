@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camden Spice | Authentic Indian Restaurant in Central London</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #C84B31;
+            --secondary: #2D2D2D;
+            --gold: #FFD700;
+            --cream: #FFF8F0;
+            --spice: #E85A4F;
+            --dark: #1a1a1a;
+            --light: #ffffff;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--secondary);
+            line-height: 1.7;
+        }
+        
+        header {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.98);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(200,75,49,0.1);
+        }
+        
+        .logo {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        nav a {
+            color: var(--secondary);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover { color: var(--primary); }
+        
+        .hero {
+            min-height: 100vh;
+            padding: 8rem 5% 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            background: linear-gradient(135deg, var(--cream) 0%, #FFE4D6 100%);
+        }
+        
+        .hero-content h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 3.8rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .hero-content p {
+            font-size: 1.15rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 480px;
+        }
+        
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stars { color: var(--gold); font-size: 1.3rem; }
+        .rating span { font-weight: 600; }
+        
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1.1rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--spice);
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .hero-img {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, var(--primary), var(--spice));
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+        }
+        
+        .floating-badge {
+            position: absolute;
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(200,75,49,0.2);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .badge-1 { bottom: 20px; left: -30px; }
+        .badge-2 { top: 20px; right: -20px; }
+        
+        /* Menu */
+        .section {
+            padding: 6rem 5%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title h2 span { color: var(--primary); }
+        
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .cat-btn {
+            padding: 0.8rem 1.8rem;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.3s;
+            color: #666;
+        }
+        
+        .cat-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .menu-item {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .menu-item:hover {
+            transform: translateX(10px);
+        }
+        
+        .menu-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--cream), #FFE4D6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+        
+        .menu-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--secondary);
+        }
+        
+        .menu-info p {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .menu-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+        
+        /* Chatbot */
+        .chatbot-section {
+            background: var(--secondary);
+            padding: 6rem 5%;
+            color: white;
+        }
+        
+        .chatbot-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+        
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--primary), var(--spice));
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .chatbot-avatar {
+            width: 55px;
+            height: 55px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        
+        .chatbot-header h3 { color: white; }
+        
+        .chat-messages {
+            height: 380px;
+            overflow-y: auto;
+            padding: 2rem;
+            background: var(--cream);
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 1rem 1.5rem;
+            border-radius: 18px;
+            margin-bottom: 1rem;
+        }
+        
+        .message.bot {
+            background: white;
+            border: 1px solid #eee;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        
+        .message.user {
+            background: var(--primary);
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .chat-input-area {
+            padding: 1.5rem 2rem;
+            background: white;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .chat-input-area input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+        
+        /* Booking */
+        .booking-section {
+            background: linear-gradient(135deg, var(--primary), var(--spice));
+            border-radius: 24px;
+            padding: 4rem;
+            margin: 2rem 0;
+            color: white;
+        }
+        
+        .booking-form {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label { font-weight: 500; }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 1rem;
+            border-radius: 12px;
+            border: none;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus { outline: none; }
+        
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 4rem 5% 2rem;
+            text-align: center;
+        }
+        
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; text-align: center; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-image { display: none; }
+            .cta-group { justify-content: center; }
+            nav { display: none; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">🍛 Camden Spice</div>
+        <nav>
+            <a href="#menu">Menu</a>
+            <a href="#chatbot">Order AI</a>
+            <a href="#booking">Reserve</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <div class="rating">
+                <div class="stars">★★★★★</div>
+                <span>4.8 (500+ reviews)</span>
+            </div>
+            <h1>Authentic Indian Cuisine in the Heart of Camden</h1>
+            <p>Family-run restaurant serving traditional recipes passed down for generations. Fresh ingredients, bold spices, unforgettable flavours.</p>
+            <div class="cta-group">
+                <a href="tel:020 7485 6932" class="btn btn-primary">📞 Call: 020 7485 6932</a>
+                <a href="#booking" class="btn btn-outline">Book a Table</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-img">🍛</div>
+            <div class="floating-badge badge-1">
+                <div style="font-size: 2rem;">🏆</div>
+                <div><strong>Best Indian</strong><br><small>Camden 2024</small></div>
+            </div>
+            <div class="floating-badge badge-2">
+                <div style="font-size: 2rem;">🥇</div>
+                <div><strong>5 Stars</strong><br><small>TripAdvisor</small></div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="menu" class="section">
+        <div class="section-title">
+            <h2>Our <span>Menu</span></h2>
+            <p>Traditional recipes with a modern twist</p>
+        </div>
+        
+        <div class="menu-categories">
+            <button class="cat-btn active" onclick="filterMenu('all')">All</button>
+            <button class="cat-btn" onclick="filterMenu('starters')">Starters</button>
+            <button class="cat-btn" onclick="filterMenu('mains')">Mains</button>
+            <button class="cat-btn" onclick="filterMenu('biryani')">Biryani</button>
+            <button class="cat-btn" onclick="filterMenu('sides')">Sides</button>
+        </div>
+        
+        <div class="menu-grid">
+            <div class="menu-item" data-category="starters">
+                <div class="menu-icon">🥟</div>
+                <div class="menu-info">
+                    <h3>Vegetable Samosas (2pc)</h3>
+                    <p>Crispy pastry filled with spiced potatoes & peas</p>
+                    <div class="menu-price">£5.50</div>
+                </div>
+            </div>
+            <div class="menu-item" data-category="starters">
+                <div class="menu-icon">🍗</div>
+                <div class="menu-info">
+                    <h3>Chicken Tikka Starter</h3>
+                    <p>Chargrilled chicken in creamy tomato sauce</p>
+                    <div class="menu-price">£7.50</div>
+                </div>
+            </div>
+            <div class="menu-item" data-category="starters">
+                <div class="menu-icon">🦐</div>
+                <div class="menu-info">
+                    <h3>Prawn Pureed</h3>
+                    <p>Spicy prawns in Bengali style</p>
+                    <div class="menu-price">£8.50</div>
+                </div>
+            </div>
+            <div class="menu-item" data-category="mains">
+                <div class="menu-icon">🍖</div>
+                <div class="menu-info">
+                    <h3>Butter Chicken</h3>
+                    <p>Slow-cooked chicken in creamy tomato & butter sauce</p>
+                    <div class="menu-price">£14.95</div>
+                </div>
+            </div>
+            <div class="menu-item" data-category="mains">
+                <div class="menu-icon">🍛</div>
+                <div class="menu-info">
+                    <h3>Lamb Rogan Josh</h3>
+                    <p>Tender lamb in aromatic spices & yogurt</p>
+                    <div class="menu-price">£15.95</div>
+                </div>
+            </div>
+            <div class="menu-item" data-category="mains">
+                <div class="menu-icon">🐟</div>
+                <div class="menu-info">
+                    <h3>Fish Madras</h3>
+                    <p>Spicy fish curry in coconut milk</p>
+                    <div class="menu-price">£15.50</div>
+                </div>
+            </div>
+            <div class="menu-item" data-category="biryani">
+                <div class="menu-icon">🍚</div>
+                <div class="menu-info">
+                    <h3>Chicken Biryani</h3>
+                    <p>Fragrant basmati rice with spiced chicken, saffron</p>
+                    <div class="menu-price">£13.95</div>
+                </div>
+            </div>
+            <div class="menu-item" data-category="biryani">
+                <div class="menu-icon">🍲</div>
+                <div class="menu-info">
+                    <h3>Lamb Biryani</h3>
+                    <p>Slow-cooked lamb with aromatic rice</p>
+                    <div class="menu-price">£15.95</div>
+                </div>
+            </div>
+            <div class="menu-item" data-category="biryani">
+                <div class="menu-icon">🥘</div>
+                <div class="menu-info">
+                    <h3>Vegetable Biryani</h3>
+                    <p>Mixed vegetables & paneer in spiced rice</p>
+                    <div class="menu-price">£11.95</div>
+                </div>
+            </div>
+            <div class="menu-item" data-category="sides">
+                <div class="menu-icon">🫓</div>
+                <div class="menu-info">
+                    <h3>Garlic Naan</h3>
+                    <p>Freshly baked flatbread with garlic butter</p>
+                    <div class="menu-price">£3.50</div>
+                </div>
+            </div>
+            <div class="menu-item" data-category="sides">
+                <div class="menu-icon">🍚</div>
+                <div class="menu-info">
+                    <h3>Jeera Rice</h3>
+                    <p>Basmati rice with cumin seeds</p>
+                    <div class="menu-price">£4.00</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="chatbot" class="chatbot-section">
+        <div class="section-title">
+            <h2 style="color: white;">Order <span>Assistant</span></h2>
+            <p style="color: rgba(255,255,255,0.8);">Get help with orders & reservations</p>
+        </div>
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">🤖</div>
+                <div>
+                    <h3>Camden Spice AI</h3>
+                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.8);">● Online Now</div>
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">Namaste! How can I help you today?</div>
+                <div class="message bot">• Menu recommendations<br>• Book a table<br>• Order for takeaway<br>• Dietary questions</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Ask about menu, bookings, allergies...">
+                <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="section-title">
+            <h2>AI <span>Voice Receptionist</span></h2>
+        </div>
+        <div style="background: linear-gradient(135deg, var(--primary), var(--spice)); border-radius: 24px; padding: 4rem; text-align: center; color: white;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">📞</div>
+            <h3>Call to Order or Reserve</h3>
+            <p>Our AI handles takeaway orders and table reservations 24/7</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                <div style="background: rgba(255,255,255,0.15); padding: 1.5rem; border-radius: 12px;">
+                    <div style="font-size: 2rem;">🕐</div>
+                    <h4>24/7 Orders</h4>
+                    <p>Book anytime</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.15); padding: 1.5rem; border-radius: 12px;">
+                    <div style="font-size: 2rem;">📅</div>
+                    <h4>Table Booking</h4>
+                    <p>Auto-schedule</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.15); padding: 1.5rem; border-radius: 12px;">
+                    <div style="font-size: 2rem;">🍛</div>
+                    <h4>Takeaway</h4>
+                    <p>Quick orders</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="booking" class="section">
+        <div class="booking-section">
+            <div class="section-title">
+                <h2 style="color: white;">Reserve a <span>Table</span></h2>
+                <p style="color: rgba(255,255,255,0.9);">We'll confirm within 30 minutes</p>
+            </div>
+            <form class="booking-form" onsubmit="handleBooking(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Name *</label>
+                        <input type="text" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone *</label>
+                        <input type="tel" name="phone" required placeholder="07xxx xxxxxx">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="your@email.com">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Date *</label>
+                        <input type="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Time *</label>
+                        <select name="time" required>
+                            <option value="">Select time...</option>
+                            <option value="12:00">12:00 PM</option>
+                            <option value="12:30">12:30 PM</option>
+                            <option value="13:00">1:00 PM</option>
+                            <option value="13:30">1:30 PM</option>
+                            <option value="18:00">6:00 PM</option>
+                            <option value="18:30">6:30 PM</option>
+                            <option value="19:00">7:00 PM</option>
+                            <option value="19:30">7:30 PM</option>
+                            <option value="20:00">8:00 PM</option>
+                            <option value="20:30">8:30 PM</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Guests *</label>
+                        <select name="guests" required>
+                            <option value="">Select...</option>
+                            <option value="2">2 people</option>
+                            <option value="3">3 people</option>
+                            <option value="4">4 people</option>
+                            <option value="5">5 people</option>
+                            <option value="6">6 people</option>
+                            <option value="7+">7+ people</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Type</label>
+                        <select name="type">
+                            <option value="dine-in">Dine-in</option>
+                            <option value="takeaway">Takeaway</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; justify-content: center; background: white; color: var(--primary);">Reserve Table</button>
+            </form>
+        </div>
+    </section>
+    
+    <section id="contact" class="section">
+        <div class="section-title">
+            <h2>Find <span>Us</span></h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>Address</h3>
+                <p>42 Camden High Street<br>London NW1 0NE</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3>Phone</h3>
+                <p>020 7485 6932</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3>Email</h3>
+                <p>info@camdenspice.co.uk</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">🕐</div>
+                <h3>Hours</h3>
+                <p>Daily: 12pm - 11pm<br>Last order: 10:30pm</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div style="font-size: 2rem; margin-bottom: 1rem;">🍛 Camden Spice</div>
+        <p>Authentic Indian Cuisine | Family Run Since 1985</p>
+        <p style="margin-top: 1rem;">© 2026 Camden Spice. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const responses = {
+            'chicken': 'Our most popular main is Butter Chicken at £14.95 - creamy, mild and delicious!',
+            'vegetarian': 'We have great veggie options! Try our Vegetable Biryani (£11.95) or Paneer Tikka (£13.50).',
+            'biryani': 'Our biryanis areSignature! Chicken £13.95, Lamb £15.95, Vegetable £11.95. Served with raita.',
+            'spicy': 'We can adjust spice to your preference. Mild, Medium, Hot, or Extra Hot. Just let us know!',
+            'vegan': 'Yes! We have vegan options including Vegetable Biryani, Daal, and Chana Masala. All marked V on menu.',
+            'booking': 'You can book via this form, or call us on 020 7485 6932. We confirm within 30 mins.',
+            'takeaway': 'We offer takeaway! Call 020 7485 6932 or order through Deliveroo/UberEats.',
+            'allergen': 'We handle allergies carefully. Please inform staff of any dietary requirements. Some dishes contain nuts, dairy, or gluten.',
+            'price': 'Starters £5.50-£8.50, Mains £13.50-£16.95, Biryani £11.95-£15.95, Sides £3.50-£4.50'
+        };
+        
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const msg = input.value.trim().toLowerCase();
+            if (!msg) return;
+            
+            addMessage(input.value, 'user');
+            input.value = '';
+            
+            let response = "Thanks! Call 020 7485 6932 for immediate help.";
+            for (const [key, value] of Object.entries(responses)) {
+                if (msg.includes(key)) { response = value; break; }
+            }
+            
+            setTimeout(() => addMessage(response, 'bot'), 500);
+        }
+        
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            div.className = `message ${sender}`;
+            div.innerHTML = text;
+            document.getElementById('chatMessages').appendChild(div);
+        }
+        
+        function handleBooking(e) {
+            e.preventDefault();
+            alert('Thank you! We will confirm your table within 30 minutes.');
+        }
+        
+        function filterMenu(cat) {
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.style.display = cat === 'all' || item.dataset.category === cat ? 'flex' : 'none';
+            });
+        }
+        
+        document.getElementById('chatInput').addEventListener('keypress', e => { if(e.key === 'Enter') sendMessage(); });
+    </script>
+</body>
+</html>

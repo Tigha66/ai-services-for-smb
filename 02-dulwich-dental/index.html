@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dulwich Village Dental | Private Dentist in Dulwich, South London</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1E3A5F;
+            --secondary: #E8F4F8;
+            --accent: #5BA4A4;
+            --coral: #E07A5F;
+            --cream: #FDF8F5;
+            --dark: #1a1a2e;
+            --light: #ffffff;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+        
+        /* Header */
+        header {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(30,58,95,0.08);
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+        
+        nav a {
+            color: var(--primary);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--coral);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after { width: 100%; }
+        
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            padding: 8rem 5% 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--secondary) 100%);
+        }
+        
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .hero-content p {
+            font-size: 1.15rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1.1rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--coral), #d46a4f);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(224,122,95,0.35);
+        }
+        
+        .btn-secondary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Hero Image */
+        .hero-image {
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(30,58,95,0.15);
+        }
+        
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(30,58,95,0.12);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating-card.card-1 {
+            bottom: 30px;
+            left: -30px;
+        }
+        
+        .floating-card.card-2 {
+            top: 30px;
+            right: -20px;
+            animation-delay: 1s;
+        }
+        
+        .floating-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        /* Services */
+        .section {
+            padding: 6rem 5%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(30,58,95,0.08);
+            transition: all 0.4s;
+            border: 1px solid rgba(30,58,95,0.06);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(30,58,95,0.12);
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--secondary), var(--cream));
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-size: 1.4rem;
+        }
+        
+        .service-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .service-price {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--coral);
+        }
+        
+        /* Chatbot */
+        .chatbot-section {
+            background: linear-gradient(180deg, var(--cream), var(--secondary));
+            padding: 6rem 5%;
+        }
+        
+        .chatbot-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(30,58,95,0.12);
+        }
+        
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .chatbot-avatar {
+            width: 55px;
+            height: 55px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        
+        .chatbot-header h3 {
+            color: white;
+            font-weight: 700;
+        }
+        
+        .chatbot-status {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.9rem;
+        }
+        
+        .chat-messages {
+            height: 400px;
+            overflow-y: auto;
+            padding: 2rem;
+            background: var(--cream);
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 1rem 1.5rem;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        
+        .message.bot {
+            background: white;
+            border: 1px solid var(--secondary);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 4px 12px rgba(30,58,95,0.06);
+        }
+        
+        .message.user {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .chat-input-area {
+            padding: 1.5rem 2rem;
+            background: white;
+            border-top: 1px solid var(--secondary);
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .chat-input-area input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: var(--cream);
+            border: 1px solid var(--secondary);
+            border-radius: 50px;
+            color: var(--dark);
+            font-size: 1rem;
+        }
+        
+        .chat-input-area input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        /* Voice Section */
+        .voice-section {
+            background: white;
+            border-radius: 24px;
+            padding: 4rem;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(30,58,95,0.08);
+        }
+        
+        .voice-visual {
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(135deg, var(--coral), #d46a4f);
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(224,122,95,0.4); }
+            50% { box-shadow: 0 0 0 25px rgba(224,122,95,0); }
+        }
+        
+        .voice-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .voice-feature {
+            padding: 1.5rem;
+            background: var(--cream);
+            border-radius: 12px;
+        }
+        
+        .voice-feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Booking */
+        .booking-section {
+            background: linear-gradient(135deg, var(--primary), #2a4a70);
+            border-radius: 24px;
+            padding: 4rem;
+            margin: 2rem 0;
+            color: white;
+        }
+        
+        .booking-section h2 {
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .booking-section p {
+            text-align: center;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .booking-form {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group input::placeholder { color: rgba(255,255,255,0.6); }
+        
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .form-group select option {
+            background: var(--primary);
+        }
+        
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(30,58,95,0.08);
+        }
+        
+        .contact-icon {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, var(--coral), #d46a4f);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+        }
+        
+        .contact-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        footer p { opacity: 0.8; }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-content h1 { font-size: 2.8rem; }
+            
+            .cta-group { justify-content: center; }
+            
+            .hero-image { display: none; }
+            
+            nav { display: none; }
+            
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logo-icon">🦷</div>
+            Dulwich Village Dental
+        </div>
+        <nav>
+            <a href="#treatments">Treatments</a>
+            <a href="#chatbot">Ask AI</a>
+            <a href="#booking">Book Visit</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Smile,<br>Our Priority</h1>
+            <p>Family-run private dental practice in Dulwich. We believe in gentle, personalized care for patients of all ages. NHS available for children.</p>
+            <div class="cta-group">
+                <a href="tel:020 8693 2165" class="btn btn-primary">📞 Call: 020 8693 2165</a>
+                <a href="#booking" class="btn btn-outline">Book Appointment</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div style="background: linear-gradient(135deg, var(--primary), var(--accent)); width: 100%; height: 450px; border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 8rem;">
+                😊
+            </div>
+            <div class="floating-card card-1">
+                <div class="floating-icon">✨</div>
+                <div>
+                    <strong>20+ Years</strong>
+                    <div style="font-size: 0.85rem; color: #666;">Experience</div>
+                </div>
+            </div>
+            <div class="floating-card card-2">
+                <div class="floating-icon">⭐</div>
+                <div>
+                    <strong>5-Star</strong>
+                    <div style="font-size: 0.85rem; color: #666;">Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="treatments" class="section">
+        <div class="section-title">
+            <h2>Our Treatments</h2>
+            <p>Comprehensive dental care for the whole family</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🦷</div>
+                <h3>General Dentistry</h3>
+                <p>Check-ups, fillings, extractions & root canal treatment. We prioritize preventive care to keep your smile healthy.</p>
+                <div class="service-price">From £65</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3>Teeth Whitening</h3>
+                <p>Professional Zoom! whitening for a brighter, more confident smile. Safe and effective treatment.</p>
+                <div class="service-price">£295</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">👶</div>
+                <h3>Children's Dentistry</h3>
+                <p>Friendly, fun visits for kids. NHS treatment available for children under 18 years old.</p>
+                <div class="service-price">Free (NHS)</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🦋</div>
+                <h3> veneers</h3>
+                <p>Transform your smile with custom porcelain veneers. Natural-looking results that last years.</p>
+                <div class="service-price">£550 per tooth</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔒</div>
+                <h3>Dental Implants</h3>
+                <p>Permanent solution for missing teeth. Restore your smile and confidence with implant treatment.</p>
+                <div class="service-price">From £2,200</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>Invisalign</h3>
+                <p>Clear aligners to straighten your teeth discreetly. Virtual consultations available.</p>
+                <div class="service-price">From £3,500</div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="chatbot" class="chatbot-section">
+        <div class="section-title">
+            <h2>AI Dental <span>Assistant</span></h2>
+            <p>Get instant answers to your dental questions</p>
+        </div>
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">🤖</div>
+                <div>
+                    <h3>Dental AI Helper</h3>
+                    <div class="chatbot-status">● Online Now</div>
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">Hello! I'm Dulwich Village Dental's AI assistant. I can help with:</div>
+                <div class="message bot">• Treatment information & pricing<br>• Booking enquiries<br>• Emergency dental advice<br>• Oral health tips</div>
+                <div class="message bot">What would you like to know?</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Ask about treatments, prices, or booking...">
+                <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="section-title">
+            <h2>AI Voice <span>Receptionist</span></h2>
+        </div>
+        <div class="voice-section">
+            <div class="voice-visual">📞</div>
+            <h3 style="color: var(--primary); margin-bottom: 1rem;">Always Available for Your Dental Needs</h3>
+            <p>Our AI receptionist handles calls professionally, 24/7</p>
+            <div class="voice-features">
+                <div class="voice-feature">
+                    <div class="voice-feature-icon">🕐</div>
+                    <h4>24/7 Booking</h4>
+                    <p>Book appointments any time</p>
+                </div>
+                <div class="voice-feature">
+                    <div class="voice-feature-icon">⚡</div>
+                    <h4>Instant Answers</h4>
+                    <p>FAQ handling</p>
+                </div>
+                <div class="voice-feature">
+                    <div class="voice-feature-icon">🏥</div>
+                    <h4>Emergency Triage</h4>
+                    <p>Assess urgency level</p>
+                </div>
+                <div class="voice-feature">
+                    <div class="voice-feature-icon">📋</div>
+                    <h4>Lead Capture</h4>
+                    <p>Collect patient details</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="booking" class="section">
+        <div class="booking-section">
+            <h2>Book Your Visit</h2>
+            <p>Fill in the form and we'll confirm within 24 hours</p>
+            <form class="booking-form" onsubmit="handleBooking(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone *</label>
+                        <input type="tel" name="phone" required placeholder="07xxx xxxxxx">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="your@email.com">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Treatment *</label>
+                        <select name="treatment" required>
+                            <option value="">Select...</option>
+                            <option value="checkup">Dental Check-up</option>
+                            <option value="hygiene">Hygiene Clean</option>
+                            <option value="whitening">Teeth Whitening</option>
+                            <option value="veneers">Veneers</option>
+                            <option value="implant">Dental Implant</option>
+                            <option value="invisalign">Invisalign</option>
+                            <option value="emergency">Emergency</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Date</label>
+                        <input type="date" name="date">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Additional Notes</label>
+                    <textarea name="notes" rows="3" placeholder="Any concerns or questions?"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; background: white; color: var(--primary);">Request Appointment</button>
+            </form>
+        </div>
+    </section>
+    
+    <section id="contact" class="section">
+        <div class="section-title">
+            <h2>Find <span>Us</span></h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>Address</h3>
+                <p>45 Dulwich Village<br>London SE21 7BN</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3>Phone</h3>
+                <p>020 8693 2165</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3>Email</h3>
+                <p>info@dulwichdental.co.uk</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">🕐</div>
+                <h3>Hours</h3>
+                <p>Mon-Fri: 9am - 6pm<br>Sat: 9am - 2pm</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">🦷 Dulwich Village Dental</div>
+            <p>GDC Registered | BDA Member | Denplan Accredited</p>
+            <p style="margin-top: 1.5rem;">© 2026 Dulwich Village Dental. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        
+        const responses = {
+            'checkup': 'A dental check-up costs from £65 and includes examination, X-rays if needed, and a personalized treatment plan. We recommend visiting every 6 months for preventive care.',
+            'whitening': 'Our professional Zoom! whitening costs £295 and takes about 60 minutes. Results can last 2-3 years with proper care. We also offer home whitening kits from £150.',
+            'veneers': 'Porcelain veneers are £550 per tooth. They can transform chips, gaps, and discoloration. Most patients need 6-8 veneers for a full smile makeover.',
+            'implant': 'Dental implants start from £2,200 per tooth. This includes the implant, abutment, and crown. We offer 0% finance options over 12 months.',
+            'invisalign': 'Invisalign treatment starts from £3,500 for mild cases. Treatment typically takes 6-18 months. We offer free virtual consultations.',
+            'emergency': 'For dental emergencies, please call us immediately on 020 8693 2165. We aim to see emergency patients the same day. Out of hours, please call 111.',
+            'nhs': 'We offer NHS treatment for children under 18. Adults can join our Denplan payment scheme or pay as you go. Ask about our 0% finance options.',
+            'price': 'Our prices: Check-up from £65, Hygiene clean from £55, White filling from £95, Extraction from £110, Whitening £295, Veneers £550, Implants from £2,200.',
+            'booking': 'You can book online, call us on 020 8693 2165, or email. We confirm appointments within 24 hours. New patients welcome.',
+            'children': "We love seeing children! First visit is fun and educational. NHS treatment is free for under 18s. We recommend first visit by age 2."
+        };
+        
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const msg = input.value.trim().toLowerCase();
+            
+            if (!msg) return;
+            
+            addMessage(input.value, 'user');
+            input.value = '';
+            
+            let response = "Thank you! For specific pricing or to book, please call us on 020 8693 2165.";
+            
+            for (const [key, value] of Object.entries(responses)) {
+                if (msg.includes(key)) {
+                    response = value;
+                    break;
+                }
+            }
+            
+            setTimeout(() => addMessage(response, 'bot'), 600);
+        }
+        
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            div.className = `message ${sender}`;
+            div.innerHTML = text;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function handleBooking(e) {
+            e.preventDefault();
+            alert('Thank you! We will contact you within 24 hours to confirm your appointment.');
+        }
+        
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
+</body>
+</html>

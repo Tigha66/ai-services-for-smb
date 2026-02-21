@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islington Vets | Independent Veterinary Practice in North London</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2E8B57;
+            --secondary: #98D8AA;
+            --accent: #3CB371;
+            --sky: #E0F7FA;
+            --coral: #FF7F7F;
+            --dark: #1a3a2a;
+            --light: #f8fdf9;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+        
+        header {
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(46,139,87,0.1);
+        }
+        
+        .logo {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            margin-left: 1.8rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover { color: var(--primary); }
+        
+        .hero {
+            min-height: 100vh;
+            padding: 8rem 5% 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            background: linear-gradient(180deg, var(--sky) 0%, var(--light) 50%);
+        }
+        
+        .hero-content h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 3.6rem;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .hero-content p {
+            font-size: 1.15rem;
+            color: #555;
+            margin-bottom: 2rem;
+            max-width: 480px;
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .hero-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .visual-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(46,139,87,0.1);
+        }
+        
+        .visual-card:first-child {
+            grid-row: span 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .visual-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .visual-card h3 { color: var(--primary); margin-bottom: 0.5rem; }
+        .visual-card p { color: #666; font-size: 0.95rem; }
+        
+        /* Services */
+        .section {
+            padding: 5rem 5%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        
+        .section-title h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.6rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.2rem;
+            box-shadow: 0 8px 30px rgba(46,139,87,0.08);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .service-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, var(--sky), var(--secondary));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-price {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        /* Chatbot */
+        .chatbot-section {
+            background: var(--primary);
+            padding: 5rem 5%;
+        }
+        
+        .chatbot-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+        
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .chatbot-avatar {
+            width: 55px;
+            height: 55px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        
+        .chatbot-header h3 { color: var(--dark); }
+        
+        .chat-messages {
+            height: 380px;
+            overflow-y: auto;
+            padding: 2rem;
+            background: var(--light);
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 1rem 1.5rem;
+            border-radius: 18px;
+            margin-bottom: 1rem;
+        }
+        
+        .message.bot {
+            background: white;
+            border: 1px solid var(--secondary);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        
+        .message.user {
+            background: var(--primary);
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .chat-input-area {
+            padding: 1.5rem 2rem;
+            background: white;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .chat-input-area input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--secondary);
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+        
+        .chat-input-area input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        /* Voice Section */
+        .voice-section {
+            background: linear-gradient(135deg, var(--sky), var(--secondary));
+            border-radius: 24px;
+            padding: 3.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .voice-visual {
+            width: 120px;
+            height: 120px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(46,139,87,0.4); }
+            50% { box-shadow: 0 0 0 20px rgba(46,139,87,0); }
+        }
+        
+        .voice-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+        
+        .voice-feature {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+        
+        /* Booking */
+        .booking-section {
+            background: white;
+            border-radius: 24px;
+            padding: 3.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(46,139,87,0.1);
+        }
+        
+        .booking-form {
+            display: grid;
+            gap: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 1rem;
+            border: 2px solid var(--secondary);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.8rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(46,139,87,0.08);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3.5rem 5% 2rem;
+            text-align: center;
+        }
+        
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; text-align: center; }
+            .hero-content h1 { font-size: 2.6rem; }
+            .hero-visual { display: none; }
+            .cta-group { justify-content: center; }
+            nav { display: none; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logo-icon">🐾</div>
+            Islington Vets
+        </div>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#chatbot">Pet AI</a>
+            <a href="#booking">Book Visit</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Caring for Your Pets Like Family</h1>
+            <p>Independent, family-run veterinary practice in Islington. We treat every patient as if they were our own pet. Open 7 days a week.</p>
+            <div class="cta-group">
+                <a href="tel:020 7226 9834" class="btn btn-primary">📞 Emergency: 020 7226 9834</a>
+                <a href="#booking" class="btn btn-outline">Book Appointment</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="visual-card">
+                <div class="visual-icon">🐕</div>
+                <h3>Your Pet's Health</h3>
+                <p>Our #1 priority</p>
+            </div>
+            <div class="visual-card">
+                <div class="visual-icon">🏥</div>
+                <p>Modern Facilities</p>
+            </div>
+            <div class="visual-card">
+                <div class="visual-icon">❤️</div>
+                <p>Compassionate Care</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="services" class="section">
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>Comprehensive care for dogs, cats & small animals</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🩺</div>
+                <h3>Consultations</h3>
+                <p>Full health checks & preventative care advice</p>
+                <div class="service-price">From £45</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💉</div>
+                <h3>Vaccinations</h3>
+                <p>Core & non-core vaccines for dogs & cats</p>
+                <div class="service-price">From £55</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🦷</div>
+                <h3>Dental Care</h3>
+                <p>Scale, polish & extractions</p>
+                <div class="service-price">£180 - £350</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔬</div>
+                <h3>Surgery</h3>
+                <p>Spay/neuter & soft tissue procedures</p>
+                <div class="service-price">£200 - £500</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🧬</div>
+                <h3>Blood Tests</h3>
+                <p>In-house lab for quick results</p>
+                <div class="service-price">£65 - £120</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✂️</div>
+                <h3>Grooming</h3>
+                <p>Nail clips, baths & full groom</p>
+                <div class="service-price">£25 - £60</div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="chatbot" class="chatbot-section">
+        <div class="section-title" style="color: white;">
+            <h2 style="color: white;">Pet Health <span>Assistant</span></h2>
+            <p style="color: rgba(255,255,255,0.9);">Get instant pet care advice</p>
+        </div>
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">🤖</div>
+                <div>
+                    <h3>Vet AI Helper</h3>
+                    <div style="font-size: 0.85rem; color: #666;">● Online 24/7</div>
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">Hello! I'm here to help with pet health questions.</div>
+                <div class="message bot">• First aid advice<br>• Symptoms to watch for<br>• Preventative care<br>• Booking queries</div>
+                <div class="message bot">What can I help with today?</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Describe symptoms or ask questions...">
+                <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="section-title">
+            <h2>AI <span>Voice Receptionist</span></h2>
+        </div>
+        <div class="voice-section">
+            <div class="voice-visual">📞</div>
+            <h3>24/7 Pet Care Line</h3>
+            <p>Our AI receptionist handles inquiries around the clock</p>
+            <div class="voice-features">
+                <div class="voice-feature">
+                    <div style="font-size: 2rem;">🆘</div>
+                    <h4>Emergency Triage</h4>
+                    <p>Assess urgency</p>
+                </div>
+                <div class="voice-feature">
+                    <div style="font-size: 2rem;">📅</div>
+                    <h4>Appointments</h4>
+                    <p>Auto-schedule</p>
+                </div>
+                <div class="voice-feature">
+                    <div style="font-size: 2rem;">💊</div>
+                    <h4>Prescription Queries</h4>
+                    <p>Medication info</p>
+                </div>
+                <div class="voice-feature">
+                    <div style="font-size: 2rem;">📋</div>
+                    <h4>Lead Capture</h4>
+                    <p>Pet details</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="booking" class="section">
+        <div class="booking-section">
+            <div class="section-title">
+                <h2>Book an <span>Appointment</span></h2>
+                <p>We'll confirm within 2 hours</p>
+            </div>
+            <form class="booking-form" onsubmit="handleBooking(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Owner Name *</label>
+                        <input type="text" name="owner" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Pet Name</label>
+                        <input type="text" name="pet" placeholder="Pet's name">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Phone *</label>
+                        <input type="tel" name="phone" required placeholder="07xxx xxxxxx">
+                    </div>
+                    <div class="form-group">
+                        <label>Pet Type</label>
+                        <select name="type">
+                            <option value="dog">Dog</option>
+                            <option value="cat">Cat</option>
+                            <option value="rabbit">Rabbit</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Service *</label>
+                        <select name="service" required>
+                            <option value="">Select...</option>
+                            <option value="consultation">Health Check</option>
+                            <option value="vaccination">Vaccination</option>
+                            <option value="dental">Dental</option>
+                            <option value="surgery">Surgery</option>
+                            <option value="grooming">Grooming</option>
+                            <option value="emergency">Emergency</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Date</label>
+                        <input type="date" name="date">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Symptoms / Notes</label>
+                    <textarea name="notes" rows="3" placeholder="Describe symptoms or reason for visit..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Book Appointment</button>
+            </form>
+        </div>
+    </section>
+    
+    <section id="contact" class="section">
+        <div class="section-title">
+            <h2>Contact <span>Us</span></h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>Address</h3>
+                <p>78 Upper Street<br>Islington N1 0NU</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3>Phone</h3>
+                <p>020 7226 9834</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">🚑</div>
+                <h3>Emergency</h3>
+                <p>020 7226 9834</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">🕐</div>
+                <h3>Hours</h3>
+                <p>Mon-Sat: 8am-7pm<br>Sun: 9am-5pm</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div style="font-size: 1.8rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+            <span>🐾</span> Islington Vets
+        </div>
+        <p>RCVS Registered | Independent Practice Since 2005</p>
+        <p style="margin-top: 1rem;">© 2026 Islington Vets. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const responses = {
+            'emergency': 'For emergencies, call us immediately on 020 7226 9834. We aim to see emergency cases same-day. Out of hours, please call 020 7226 9834 for our on-call vet.',
+            'vaccination': 'Vaccinations start from £55 for core vaccines. Puppies need 2 injections, adult dogs need annual boosters. Cats also need annual vaccination.',
+            'dental': 'Dental treatment costs £180-£350 depending on extractions needed. All dental procedures include scale, polish, and anesthesia.',
+            'surgery': 'Spay from £200, neuter from £180. All surgeries include pre-op check, anesthesia, pain relief, and post-op care.',
+            'cost': 'Consultations from £45, vaccinations from £55, dental from £180, spay from £200, blood tests from £65.',
+            'register': 'To register, simply call us or fill in the booking form. Bring your pet and any vaccination records on your first visit.',
+            'appointment': 'You can book online, or call 020 7226 9834. We confirm within 2 hours. For emergencies, call immediately.',
+            'grooming': 'We offer nail clips from £15, bath & dry from £25, full groom from £45. Book with our nurse.'
+        };
+        
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const msg = input.value.trim().toLowerCase();
+            if (!msg) return;
+            
+            addMessage(input.value, 'user');
+            input.value = '';
+            
+            let response = "For specific medical advice, please call 020 7226 9834. For bookings, use our form.";
+            for (const [key, value] of Object.entries(responses)) {
+                if (msg.includes(key)) { response = value; break; }
+            }
+            
+            setTimeout(() => addMessage(response, 'bot'), 500);
+        }
+        
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            div.className = `message ${sender}`;
+            div.innerHTML = text;
+            document.getElementById('chatMessages').appendChild(div);
+            document.getElementById('chatMessages').scrollTop = 9999;
+        }
+        
+        function handleBooking(e) {
+            e.preventDefault();
+            alert('Thank you! We will contact you within 2 hours to confirm.');
+        }
+        
+        document.getElementById('chatInput').addEventListener('keypress', e => { if(e.key === 'Enter') sendMessage(); });
+    </script>
+</body>
+</html>

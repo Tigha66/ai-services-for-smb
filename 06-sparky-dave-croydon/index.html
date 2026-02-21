@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South London Electrician | NICEIC Registered in Croydon</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FFB627;
+            --secondary: #1A1A2E;
+            --accent: #FF6B35;
+            --electric: #FFE066;
+            --dark: #0f0f1a;
+            --light: #fafafa;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark);
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+        
+        header {
+            padding: 1.3rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15,15,26,0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,182,39,0.2);
+        }
+        
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+        
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            margin-left: 1.8rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover { color: var(--primary); }
+        
+        .hero {
+            min-height: 100vh;
+            padding: 8rem 5% 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            background: 
+                radial-gradient(ellipse at 80% 20%, rgba(255,182,39,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 80%, rgba(255,107,53,0.1) 0%, transparent 50%);
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-content h1 span {
+            color: var(--primary);
+        }
+        
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #999;
+            margin-bottom: 2rem;
+            max-width: 480px;
+        }
+        
+        .badges {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            background: rgba(255,182,39,0.15);
+            border: 1px solid var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--dark);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255,182,39,0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .hero-services {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .service-mini {
+            background: rgba(26,26,46,0.8);
+            border: 1px solid rgba(255,182,39,0.2);
+            border-radius: 14px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .service-mini:hover {
+            border-color: var(--primary);
+            transform: translateX(10px);
+        }
+        
+        .service-mini-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--electric));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .service-mini h3 { color: var(--primary); font-size: 1.1rem; margin-bottom: 0.2rem; }
+        .service-mini p { color: #888; font-size: 0.9rem; }
+        
+        /* Services */
+        .section {
+            padding: 5rem 5%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title h2 span { color: var(--primary); }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .service-card {
+            background: rgba(26,26,46,0.8);
+            border: 1px solid rgba(255,182,39,0.15);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .service-card h3 {
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .service-card p {
+            color: #999;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-price {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--electric);
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        
+        /* Chatbot */
+        .chatbot-section {
+            background: linear-gradient(180deg, transparent, rgba(255,182,39,0.08));
+            padding: 5rem 5%;
+        }
+        
+        .chatbot-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--secondary);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255,182,39,0.2);
+        }
+        
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .chatbot-avatar {
+            width: 55px;
+            height: 55px;
+            background: var(--dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        
+        .chatbot-header h3 { color: var(--dark); }
+        
+        .chat-messages {
+            height: 380px;
+            overflow-y: auto;
+            padding: 2rem;
+            background: var(--dark);
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 1rem 1.5rem;
+            border-radius: 18px;
+            margin-bottom: 1rem;
+        }
+        
+        .message.bot {
+            background: rgba(26,26,46,0.8);
+            border: 1px solid rgba(255,182,39,0.2);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        
+        .message.user {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--dark);
+            align-self: flex-end;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .chat-input-area {
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .chat-input-area input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: var(--dark);
+            border: 1px solid rgba(255,182,39,0.2);
+            border-radius: 50px;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .chat-input-area input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        /* Voice */
+        .voice-section {
+            background: rgba(26,26,46,0.8);
+            border: 1px solid rgba(255,182,39,0.2);
+            border-radius: 24px;
+            padding: 3.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .voice-visual {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            animation: pulse 2s        
+        @keyframes pulse {
+             infinite;
+        }
+0%, 100% { box-shadow: 0 0 0 0 rgba(255,182,39,0.4); }
+            50% { box-shadow: 0 0 0 20px rgba(255,182,39,0); }
+        }
+        
+        .voice-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+        
+        .voice-feature {
+            background: rgba(255,255,255,0.03);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+        
+        /* Booking */
+        .booking-section {
+            background: linear-gradient(135deg, var(--secondary), #252540);
+            border: 1px solid rgba(255,182,39,0.2);
+            border-radius: 24px;
+            padding: 3.5rem;
+            margin: 2rem 0;
+        }
+        
+        .booking-form {
+            display: grid;
+            gap: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label { color: var(--primary); font-weight: 500; }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 1rem;
+            background: var(--dark);
+            border: 1px solid rgba(255,182,39,0.2);
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-card {
+            background: rgba(26,26,46,0.8);
+            border: 1px solid rgba(255,182,39,0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        footer {
+            background: var(--secondary);
+            padding: 3rem 5% 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,182,39,0.2);
+        }
+        
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; text-align: center; }
+            .hero-content h1 { font-size: 2.6rem; }
+            .hero-services { display: none; }
+            .cta-group { justify-content: center; }
+            nav { display: none; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logo-icon">⚡</div>
+            Sparky Dave
+        </div>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#chatbot">AI Helper</a>
+            <a href="#booking">Book Now</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badges">
+                <span class="badge">✓ NICEIC Registered</span>
+                <span class="badge">✓ Part P Certified</span>
+                <span class="badge">✓ £5M Liability</span>
+            </div>
+            <h1>Reliable <span>Electrician</span> in South London</h1>
+            <p>Fast, honest electrical services in Croydon, Bromley & surrounding areas. No job too small. Free quotes. 24/7 emergency callout.</p>
+            <div class="cta-group">
+                <a href="tel:020 8688 7744" class="btn btn-primary">📞 Call: 020 8688 7744</a>
+                <a href="#booking" class="btn btn-outline">Get Quote</a>
+            </div>
+        </div>
+        <div class="hero-services">
+            <div class="service-mini">
+                <div class="service-mini-icon">🔌</div>
+                <div>
+                    <h3>Sockets & Lighting</h3>
+                    <p>From £60</p>
+                </div>
+            </div>
+            <div class="service-mini">
+                <div class="service-mini-icon">⚡</div>
+                <div>
+                    <h3>EICR / Electrical Report</h3>
+                    <p>From £120</p>
+                </div>
+            </div>
+            <div class="service-mini">
+                <div class="service-mini-icon">🔧</div>
+                <div>
+                    <h3>Fuseboard Upgrades</h3>
+                    <p>From £450</p>
+                </div>
+            </div>
+            <div class="service-mini">
+                <div class="service-mini-icon">🚨</div>
+                <div>
+                    <h3>Emergency Callout</h3>
+                    <p>From £80</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="services" class="section">
+        <div class="section-title">
+            <h2>Our <span>Services</span> & Pricing</h2>
+            <p>Transparent pricing - no hidden costs</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>🔌 Socket Installation</h3>
+                <p>Additional sockets, double sockets, USB sockets</p>
+                <div class="service-price">£60 - £120</div>
+            </div>
+            <div class="service-card">
+                <h3>💡 Light Fitting</h3>
+                <p>LED lights, chandeliers, spotlights, garden lights</p>
+                <div class="service-price">£50 - £200</div>
+            </div>
+            <div class="service-card">
+                <h3>📋 EICR Report</h3>
+                <p>Electrical Installation Condition Report for landlords</p>
+                <div class="service-price">£120 - £250</div>
+            </div>
+            <div class="service-card">
+                <h3>⚡ Fuseboard Upgrade</h3>
+                <p>Modern consumer unit with RCD protection</p>
+                <div class="service-price">£450 - £700</div>
+            </div>
+            <div class="service-card">
+                <h3>🔧 Rewiring</h3>
+                <p>Partial or full house rewiring</p>
+                <div class="service-price">From £2,000</div>
+            </div>
+            <div class="service-card">
+                <h3>🚨 Emergency</h3>
+                <p>24/7 emergency callout - fast response</p>
+                <div class="service-price">£80 + parts</div>
+            </div>
+            <div class="service-card">
+                <h3>🏠 Garden Electrics</h3>
+                <p>Sockets, lighting, hot tubs, sheds</p>
+                <div class="service-price">£150 - £500</div>
+            </div>
+            <div class="service-card">
+                <h3>🚗 EV Charger</h3>
+                <p>Electric vehicle charger installation</p>
+                <div class="service-price">£450 - £700</div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="chatbot" class="chatbot-section">
+        <div class="section-title">
+            <h2>AI <span>Electrician Assistant</span></h2>
+            <p>Get instant electrical advice</p>
+        </div>
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">🤖</div>
+                <div>
+                    <h3>Dave's AI Helper</h3>
+                    <div style="font-size: 0.85rem; color: var(--dark);">● Online Now</div>
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">Hi! I'm here to help with electrical questions.</div>
+                <div class="message bot">• Pricing & quotes<br>• Electrical safety<br>• Common problems<br>• Booking enquiries</div>
+                <div class="message bot">What can I help with?</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Describe your electrical issue...">
+                <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="section-title">
+            <h2>AI <span>Voice Receptionist</span></h2>
+        </div>
+        <div class="voice-section">
+            <div class="voice-visual">📞</div>
+            <h3>24/7 Emergency Line</h3>
+            <p>Our AI handles electrical emergencies around the clock</p>
+            <div class="voice-features">
+                <div class="voice-feature">
+                    <div style="font-size: 2rem;">⚡</div>
+                    <h4>Emergency Triage</h4>
+                    <p>Assess urgency</p>
+                </div>
+                <div class="voice-feature">
+                    <div style="font-size: 2rem;">📋</div>
+                    <h4>Quote Requests</h4>
+                    <p>Capture details</p>
+                </div>
+                <div class="voice-feature">
+                    <div style="font-size: 2rem;">📅</div>
+                    <h4>Booking</h4>
+                    <p>Schedule visits</p>
+                </div>
+                <div class="voice-feature">
+                    <div style="font-size: 2rem;">📝</div>
+                    <h4>Lead Capture</h4>
+                    <p>Property details</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="booking" class="section">
+        <div class="booking-section">
+            <div class="section-title">
+                <h2>Get a <span>Quote</span></h2>
+                <p>We'll respond within 2 hours</p>
+            </div>
+            <form class="booking-form" onsubmit="handleBooking(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Name *</label>
+                        <input type="text" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone *</label>
+                        <input type="tel" name="phone" required placeholder="07xxx xxxxxx">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" name="address" placeholder="Property address">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Service *</label>
+                        <select name="service" required>
+                            <option value="">Select...</option>
+                            <option value="sockets">Socket/Light Fitting</option>
+                            <option value="eicr">EICR Report</option>
+                            <option value="fuseboard">Fuseboard Upgrade</option>
+                            <option value="rewire">Rewiring</option>
+                            <option value="emergency">Emergency</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Urgency</label>
+                        <select name="urgency">
+                            <option value="normal">Normal</option>
+                            <option value="soon">Within a week</option>
+                            <option value="urgent">Urgent</option>
+                            <option value="emergency">Emergency</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Describe the Work</label>
+                    <textarea name="description" rows="3" placeholder="Describe what needs doing..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Get Free Quote</button>
+            </form>
+        </div>
+    </section>
+    
+    <section id="contact" class="section">
+        <div class="section-title">
+            <h2>Contact <span>Us</span></h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>Address</h3>
+                <p>45 High Street<br>Croydon CR0 1QD</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3>Phone</h3>
+                <p>020 8688 7744</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">⚡</div>
+                <h3>Emergency</h3>
+                <p>07958 334455</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3>Email</h3>
+                <p>info@sparkydave.co.uk</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
+            <div class="logo-icon">⚡</div>
+            Sparky Dave
+        </div>
+        <p>NICEIC Registered | Part P Certified | £5M Liability Insured</p>
+        <p style="margin-top: 1rem;">© 2026 Sparky Dave Electrician. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const responses = {
+            'EICR': 'EICR (Electrical Installation Condition Report) costs from £120 for a flat, £180 for a house. Required every 5 years for landlords. Includes full testing and certificate.',
+            'socket': 'Socket installation starts from £60 for a single, £100 for double. Additional sockets from £60. We can also install USB sockets from £45 extra.',
+            'fuseboard': 'Fuseboard upgrade costs from £450-£700 depending on size. Includes modern RCD consumer unit, testing and certificate.',
+            'emergency': 'Emergency callout is £80 + parts. We aim to arrive within 1-2 hours for emergencies. Call 07958 334455 for 24/7 emergency.',
+            'rewire': 'Full rewire starts from £2,000 for a flat, £4,000-£8,000 for a house. Price depends on size and scope. Free survey and quote.',
+            'price': 'Prices: Sockets from £60, lights from £50, EICR from £120, fuseboard from £450, emergency £80+parts.',
+            'quote': 'We provide free, no-obligation quotes. Fill in the form and we respond within 2 hours. Most quotes within 24 hours.',
+            'landlord': "Landlords need an EICR every 5 years. We provide certificates for £120+. Quick turnaround available."
+        };
+        
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const msg = input.value.trim().toLowerCase();
+            if (!msg) return;
+            
+            addMessage(input.value, 'user');
+            input.value = '';
+            
+            let response = "Thanks! Call 020 8688 7744 for immediate help or use our quote form.";
+            for (const [key, value] of Object.entries(responses)) {
+                if (msg.includes(key)) { response = value; break; }
+            }
+            
+            setTimeout(() => addMessage(response, 'bot'), 500);
+        }
+        
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            div.className = `message ${sender}`;
+            div.innerHTML = text;
+            document.getElementById('chatMessages').appendChild(div);
+            document.getElementById('chatMessages').scrollTop = 9999;
+        }
+        
+        function handleBooking(e) {
+            e.preventDefault();
+            alert('Thank you! We will respond to your quote request within 2 hours.');
+        }
+        
+        document.getElementById('chatInput').addEventListener('keypress', e => { if(e.key === 'Enter') sendMessage(); });
+    </script>
+</body>
+</html>

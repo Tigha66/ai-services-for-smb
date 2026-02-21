@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackney Beauty Lounge | Premium Beauty Salon in East London</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D4A5A5;
+            --secondary: #9B2335;
+            --rose: #E8D5D5;
+            --champagne: #FDF6F0;
+            --gold: #C9A227;
+            --dark: #2D2D2D;
+            --light: #fdfbfb;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+        
+        header {
+            padding: 1.3rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.98);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(212,165,165,0.15);
+        }
+        
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            margin-left: 1.8rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover { color: var(--secondary); }
+        
+        .hero {
+            min-height: 100vh;
+            padding: 8rem 5% 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+            background: linear-gradient(180deg, var(--champagne) 0%, var(--light) 50%);
+        }
+        
+        .hero-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.8rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 480px;
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #7a1f2d;
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .grid-item {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(155,35,53,0.08);
+        }
+        
+        .grid-item:first-child {
+            grid-row: span 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .grid-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+        .grid-item h3 { color: var(--secondary); font-size: 1.1rem; }
+        
+        /* Services */
+        .section { padding: 5rem 5%; }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        
+        .section-title h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .services-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.3s;
+            color: #666;
+        }
+        
+        .tab-btn.active {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(155,35,53,0.08);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .service-card:hover {
+            border-color: var(--rose);
+            transform: translateY(-5px);
+        }
+        
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-card h3 { color: var(--secondary); font-size: 1.2rem; }
+        
+        .service-price {
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+        
+        .service-card p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .service-duration {
+            color: var(--primary);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+        
+        /* Chatbot */
+        .chatbot-section {
+            background: var(--secondary);
+            padding: 5rem 5%;
+        }
+        
+        .chatbot-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+        
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--primary), var(--rose));
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .chatbot-avatar {
+            width: 55px;
+            height: 55px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        
+        .chatbot-header h3 { color: var(--secondary); }
+        
+        .chat-messages {
+            height: 380px;
+            overflow-y: auto;
+            padding: 2rem;
+            background: var(--champagne);
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 1rem 1.5rem;
+            border-radius: 18px;
+            margin-bottom: 1rem;
+        }
+        
+        .message.bot {
+            background: white;
+            border: 1px solid var(--rose);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        
+        .message.user {
+            background: var(--secondary);
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .chat-input-area {
+            padding: 1.5rem 2rem;
+            background: white;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .chat-input-area input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--rose);
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+        
+        .chat-input-area input:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        
+        /* Voice */
+        .voice-section {
+            background: linear-gradient(135deg, var(--rose), var(--champagne));
+            border-radius: 24px;
+            padding: 3.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .voice-visual {
+            width: 120px;
+            height: 120px;
+            background: var(--secondary);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(155,35,53,0.4); }
+            50% { box-shadow: 0 0 0 20px rgba(155,35,53,0); }
+        }
+        
+        .voice-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+        
+        .voice-feature {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+        
+        /* Booking */
+        .booking-section {
+            background: white;
+            border-radius: 24px;
+            padding: 3.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(155,35,53,0.1);
+        }
+        
+        .booking-form {
+            display: grid;
+            gap: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label { font-weight: 500; color: var(--dark); }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 1rem;
+            border: 2px solid var(--rose);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, min-width(250px));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(155,35,53,0.08);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--secondary);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 3.5rem 5% 2rem;
+            text-align: center;
+        }
+        
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; text-align: center; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-grid { display: none; }
+            .cta-group { justify-content: center; }
+            nav { display: none; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">✨ Hackney Beauty Lounge</div>
+        <nav>
+            <a href="#services">Treatments</a>
+            <a href="#chatbot">Book AI</a>
+            <a href="#booking">Book Now</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Beauty,<br>Our Passion</h1>
+            <p>Award-winning beauty salon in Hackney. Luxury treatments in a relaxing environment. Open 7 days a week for your self-care.</p>
+            <div class="cta-group">
+                <a href="tel:020 8985 2233" class="btn btn-primary">📞 Call: 020 8985 2233</a>
+                <a href="#booking" class="btn btn-outline">Book Treatment</a>
+            </div>
+        </div>
+        <div class="hero-grid">
+            <div class="grid-item">
+                <div class="grid-icon">💅</div>
+                <h3>Book Your<br>Treatment</h3>
+            </div>
+            <div class="grid-item">
+                <div class="grid-icon">💆</div>
+                <h3>Relax</h3>
+            </div>
+            <div class="grid-item">
+                <div class="grid-icon">✨</div>
+                <h3>Glow</h3>
+            </div>
+        </div>
+    </section>
+    
+    <section id="services" class="section">
+        <div class="section-title">
+            <h2>Our <span>Treatments</span></h2>
+            <p>Luxury beauty services for face, body & nails</p>
+        </div>
+        
+        <div class="services-tabs">
+            <button class="tab-btn active" onclick="filterServices('all')">All</button>
+            <button class="tab-btn" onclick="filterServices('nails')">Nails</button>
+            <button class="tab-btn" onclick="filterServices('faces')">Facials</button>
+            <button class="tab-btn" onclick="filterServices('massage')">Massage</button>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card" data-category="nails">
+                <div class="service-header">
+                    <h3>Gel Manicure</h3>
+                    <span class="service-price">£45</span>
+                </div>
+                <p>Long-lasting gel polish, cuticle care & hand massage</p>
+                <div class="service-duration">⏱ 45 mins</div>
+            </div>
+            <div class="service-card" data-category="nails">
+                <div class="service-header">
+                    <h3>Gel Pedicure</h3>
+                    <span class="service-price">£50</span>
+                </div>
+                <p>Luxury foot spa, gel polish & leg massage</p>
+                <div class="service-duration">⏱ 50 mins</div>
+            </div>
+            <div class="service-card" data-category="nails">
+                <div class="service-header">
+                    <h3>Nail Art</h3>
+                    <span class="service-price">£15+</span>
+                </div>
+                <p>Custom designs, gems, chrome & nail art</p>
+                <div class="service-duration">⏱ From 15 mins</div>
+            </div>
+            <div class="service-card" data-category="faces">
+                <div class="service-header">
+                    <h3>Classic Facial</h3>
+                    <span class="service-price">£55</span>
+                </div>
+                <p>Deep cleanse, exfoliation, mask & hydration</p>
+                <div class="service-duration">⏱ 60 mins</div>
+            </div>
+            <div class="service-card" data-category="faces">
+                <div class="service-header">
+                    <h3>Anti-Aging Facial</h3>
+                    <span class="service-price">£75</span>
+                </div>
+                <p>Advanced skincare with LED & massage</p>
+                <div class="service-duration">⏱ 75 mins</div>
+            </div>
+            <div class="service-card" data-category="faces">
+                <div class="service-header">
+                    <h3>Microneedling</h3>
+                    <span class="service-price">£120</span>
+                </div>
+                <p>Skin renewal treatment for fine lines & scars</p>
+                <div class="service-duration">⏱ 90 mins</div>
+            </div>
+            <div class="service-card" data-category="massage">
+                <div class="service-header">
+                    <h3>Swedish Massage</h3>
+                    <span class="service-price">£50</span>
+                </div>
+                <p>Relaxing full body massage</p>
+                <div class="service-duration">⏱ 60 mins</div>
+            </div>
+            <div class="service-card" data-category="massage">
+                <div class="service-header">
+                    <h3>Deep Tissue</h3>
+                    <span class="service-price">£60</span>
+                </div>
+                <p>Intensive muscle relief</p>
+                <div class="service-duration">⏱ 60 mins</div>
+            </div>
+            <div class="service-card" data-category="massage">
+                <div class="service-header">
+                    <h3>Hot Stone</h3>
+                    <span class="service-price">£70</span>
+                </div>
+                <p>Relaxing massage with heated stones</p>
+                <div class="service-duration">⏱ 75 mins</div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="chatbot" class="chatbot-section">
+        <div class="section-title" style="color: white;">
+            <h2 style="color: white;">Booking <span>Assistant</span></h2>
+            <p style="color: rgba(255,255,255,0.9);">Help with bookings & treatments</p>
+        </div>
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">💆‍♀️</div>
+                <div>
+                    <h3>Beauty AI Helper</h3>
+                    <div style="font-size: 0.85rem; color: var(--secondary);">● Online Now</div>
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">Hello! How can I help with your beauty needs?</div>
+                <div class="message bot">• Treatment info & pricing<br>• Booking availability<br>• Product recommendations<br>• Special offers</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Ask about treatments, bookings...">
+                <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="section-title">
+            <h2>AI <span>Voice Receptionist</span></h2>
+        </div>
+        <div class="voice-section">
+            <div class="voice-visual">📞</div>
+            <h3 style="color: var(--secondary);">Book by Phone, 24/7</h3>
+            <p>Our AI handles bookings around the clock</p>
+            <div class="voice-features">
+                <div class="voice-feature">
+                    <div style="font-size: 2rem;">🕐</div>
+                    <h4>24/7 Booking</h4>
+                    <p>Book anytime</p>
+                </div>
+                <div class="voice-feature">
+                    <div style="font-size: 2rem;">📅</div>
+                    <h4>Appointments</h4>
+                    <p>Auto-schedule</p>
+                </div>
+                <div class="voice-feature">
+                    <div style="font-size: 2rem;">💬</div>
+                    <h4>Consultations</h4>
+                    <p>Treatment advice</p>
+                </div>
+                <div class="voice-feature">
+                    <div style="font-size: 2rem;">🎁</div>
+                    <h4>Offers</h4>
+                    <p>Latest deals</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="booking" class="section">
+        <div class="booking-section">
+            <div class="section-title">
+                <h2>Book <span>Appointment</span></h2>
+                <p>We'll confirm within 1 hour</p>
+            </div>
+            <form class="booking-form" onsubmit="handleBooking(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Name *</label>
+                        <input type="text" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone *</label>
+                        <input type="tel" name="phone" required placeholder="07xxx xxxxxx">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="your@email.com">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Treatment *</label>
+                        <select name="treatment" required>
+                            <option value="">Select...</option>
+                            <option value="manicure">Gel Manicure</option>
+                            <option value="pedicure">Gel Pedicure</option>
+                            <option value="facial">Classic Facial</option>
+                            <option value="antiaging">Anti-Aging Facial</option>
+                            <option value="microneedling">Microneedling</option>
+                            <option value="swedish">Swedish Massage</option>
+                            <option value="deep">Deep Tissue</option>
+                            <option value="hotstone">Hot Stone</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Therapist</label>
+                        <select name="therapist">
+                            <option value="any">Any Therapist</option>
+                            <option value="maya">Maya (Nails)</option>
+                            <option value="sophie">Sophie (Facials)</option>
+                            <option value="elena">Elena (Massage)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Preferred Date</label>
+                    <input type="date" name="date">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Book Appointment</button>
+            </form>
+        </div>
+    </section>
+    
+    <section id="contact" class="section">
+        <div class="section-title">
+            <h2>Find <span>Us</span></h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>Address</h3>
+                <p>23 Mare Street<br>London E8 2RP</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3>Phone</h3>
+                <p>020 8985 2233</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3>Email</h3>
+                <p>book@hackneybeauty.co.uk</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">🕐</div>
+                <h3>Hours</h3>
+                <p>Mon-Sat: 9am-8pm<br>Sun: 10am-6pm</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div style="font-size: 1.8rem; margin-bottom: 1rem;">✨ Hackney Beauty Lounge</div>
+        <p>Award-Winning Salon | CND Shellac | Dermalogica</p>
+        <p style="margin-top: 1rem;">© 2026 Hackney Beauty Lounge. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const responses = {
+            'manicure': 'Gel manicure is £45 and lasts 2-3 weeks without chipping. Includes cuticle care and hand massage. Book with Maya!',
+            'pedicure': 'Luxury gel pedicure is £50 - includes foot spa, exfoliation, gel polish and leg massage. So relaxing!',
+            'facial': 'Classic facial is £55 for 60 minutes. Deep cleanse, exfoliation, massage, mask and hydration. Great for all skin types!',
+            'microneedling': 'Microneedling is £120 - advanced treatment for fine lines, scars and skin renewal. Course of 3 recommended.',
+            'massage': 'Swedish from £50, Deep Tissue £60, Hot Stone £70. All include consultation. Perfect for stress relief!',
+            'price': 'Nails: £45-£65, Facials: £55-£120, Massage: £50-£70. Check our current offers!',
+            'booking': 'You can book via this form, call 020 8985 2233, or DM us. We confirm within 1 hour!',
+            'offer': 'Ask about our current special offers! We often have packages and discounts.'
+        };
+        
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const msg = input.value.trim().toLowerCase();
+            if (!msg) return;
+            
+            addMessage(input.value, 'user');
+            input.value = '';
+            
+            let response = "Thanks! Call 020 8985 2233 or use our booking form.";
+            for (const [key, value] of Object.entries(responses)) {
+                if (msg.includes(key)) { response = value; break; }
+            }
+            
+            setTimeout(() => addMessage(response, 'bot'), 500);
+        }
+        
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            div.className = `message ${sender}`;
+            div.innerHTML = text;
+            document.getElementById('chatMessages').appendChild(div);
+            document.getElementById('chatMessages').scrollTop = 9999;
+        }
+        
+        function handleBooking(e) {
+            e.preventDefault();
+            alert('Thank you! We will confirm your appointment within 1 hour.');
+        }
+        
+        function filterServices(cat) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            document.querySelectorAll('.service-card').forEach(card => {
+                card.style.display = cat === 'all' || card.dataset.category === cat ? 'block' : 'none';
+            });
+        }
+        
+        document.getElementById('chatInput').addEventListener('keypress', e => { if(e.key === 'Enter') sendMessage(); });
+    </script>
+</body>
+</html>

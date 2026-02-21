@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shepherd's Bush Hair | Premium Hair Salon in West London</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D4A574;
+            --secondary: #2C2C2C;
+            --accent: #8B4513;
+            --rose: #E8B4B8;
+            --champagne: #F7E7CE;
+            --dark: #1a1a1a;
+            --light: #fafafa;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Sora', sans-serif;
+            background: var(--light);
+            color: var(--secondary);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.98);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .logo span { color: var(--primary); }
+        
+        nav a {
+            color: var(--secondary);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover { color: var(--primary); }
+        
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            padding: 8rem 5% 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            background: linear-gradient(180deg, var(--champagne) 0%, var(--light) 50%);
+        }
+        
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-content h1 span {
+            color: var(--primary);
+            font-style: italic;
+        }
+        
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 480px;
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .hero-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .gallery-item:nth-child(1) {
+            grid-row: span 2;
+            height: 100%;
+        }
+        
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            background: linear-gradient(135deg, var(--rose), var(--champagne));
+        }
+        
+        /* Services */
+        .section {
+            padding: 6rem 5%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title h2 span {
+            color: var(--primary);
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        
+        .services-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.3s;
+            color: #666;
+        }
+        
+        .tab-btn.active {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+        }
+        
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.3rem;
+            color: var(--secondary);
+        }
+        
+        .service-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .service-card p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        /* Chatbot */
+        .chatbot-section {
+            background: var(--secondary);
+            padding: 6rem 5%;
+            color: white;
+        }
+        
+        .chatbot-section .section-title h2 { color: white; }
+        .chatbot-section .section-title p { color: rgba(255,255,255,0.7); }
+        
+        .chatbot-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+        
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--primary), var(--rose));
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .chatbot-avatar {
+            width: 55px;
+            height: 55px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        
+        .chatbot-header h3 { color: var(--secondary); }
+        
+        .chat-messages {
+            height: 400px;
+            overflow-y: auto;
+            padding: 2rem;
+            background: var(--light);
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 1rem 1.5rem;
+            border-radius: 18px;
+            margin-bottom: 1rem;
+        }
+        
+        .message.bot {
+            background: white;
+            border: 1px solid #eee;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        
+        .message.user {
+            background: var(--secondary);
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .chat-input-area {
+            padding: 1.5rem 2rem;
+            background: white;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .chat-input-area input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .chat-input-area input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        /* Voice */
+        .voice-section {
+            background: linear-gradient(135deg, var(--rose), var(--champagne));
+            border-radius: 24px;
+            padding: 4rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .voice-visual {
+            width: 130px;
+            height: 130px;
+            background: var(--secondary);
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .voice-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .voice-feature {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+        
+        /* Booking */
+        .booking-section {
+            background: white;
+            border-radius: 24px;
+            padding: 4rem;
+            margin: 2rem 0;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+        }
+        
+        .booking-form {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-weight: 500;
+            color: var(--secondary);
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 4rem 5% 2rem;
+            text-align: center;
+        }
+        
+        footer p { opacity: 0.7; }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; text-align: center; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-gallery { display: none; }
+            .cta-group { justify-content: center; }
+            nav { display: none; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Shepherd's Bush <span>Hair</span></div>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#chatbot">Stylist Chat</a>
+            <a href="#booking">Book Now</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Where <span>Style</span> Meets Soul</h1>
+            <p>Award-winning hair salon in Shepherd's Bush. Specialising in colour, cuts and extensions. Book your transformation today.</p>
+            <div class="cta-group">
+                <a href="tel:020 8743 5092" class="btn btn-primary">📞 Call: 020 8743 5092</a>
+                <a href="#booking" class="btn btn-outline">Book Appointment</a>
+            </div>
+        </div>
+        <div class="hero-gallery">
+            <div class="gallery-item"><div class="gallery-placeholder">💇‍♀️</div></div>
+            <div class="gallery-item"><div class="gallery-placeholder">💇</div></div>
+            <div class="gallery-item"><div class="gallery-placeholder">✨</div></div>
+        </div>
+    </section>
+    
+    <section id="services" class="section">
+        <div class="section-title">
+            <h2>Our <span>Services</span> & Prices</h2>
+            <p>Premium hair services tailored to you</p>
+        </div>
+        
+        <div class="services-tabs">
+            <button class="tab-btn active" onclick="filterServices('all')">All</button>
+            <button class="tab-btn" onclick="filterServices('cut')">Cuts</button>
+            <button class="tab-btn" onclick="filterServices('colour')">Colour</button>
+            <button class="tab-btn" onclick="filterServices('treatments')">Treatments</button>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card" data-category="cut">
+                <div class="service-header">
+                    <h3>Women's Cut & Style</h3>
+                    <span class="service-price">£55</span>
+                </div>
+                <p>Consultation, wash, cut, blow-dry & style</p>
+            </div>
+            <div class="service-card" data-category="cut">
+                <div class="service-header">
+                    <h3>Men's Cut</h3>
+                    <span class="service-price">£30</span>
+                </div>
+                <p>Professional cut & finish</p>
+            </div>
+            <div class="service-card" data-category="colour">
+                <div class="service-header">
+                    <h3>Full Head Colour</h3>
+                    <span class="service-price">£75</span>
+                </div>
+                <p>Professional permanent colour</p>
+            </div>
+            <div class="service-card" data-category="colour">
+                <div class="service-header">
+                    <h3>Balayage</h3>
+                    <span class="service-price">£120</span>
+                </div>
+                <p>Hand-painted highlights for natural look</p>
+            </div>
+            <div class="service-card" data-category="colour">
+                <div class="service-header">
+                    <h3>Highlights (Partial)</h3>
+                    <span class="service-price">£65</span>
+                </div>
+                <p>Face framing highlights</p>
+            </div>
+            <div class="service-card" data-category="colour">
+                <div class="service-header">
+                    <h3>Highlights (Full)</h3>
+                    <span class="service-price">£95</span>
+                </div>
+                <p>Full head foils</p>
+            </div>
+            <div class="service-card" data-category="treatments">
+                <div class="service-header">
+                    <h3>Keratin Treatment</h3>
+                    <span class="service-price">£150</span>
+                </div>
+                <p>Frizz elimination, lasting 3-4 months</p>
+            </div>
+            <div class="service-card" data-category="treatments">
+                <div class="service-header">
+                    <h3>Deep Conditioning</h3>
+                    <span class="service-price">£25</span>
+                </div>
+                <p>Intensive moisture treatment</p>
+            </div>
+            <div class="service-card" data-category="cut">
+                <div class="service-header">
+                    <h3>Children's Cut</h3>
+                    <span class="service-price">£22</span>
+                </div>
+                <p>For under 12s</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="chatbot" class="chatbot-section">
+        <div class="section-title">
+            <h2>AI <span>Stylist Assistant</span></h2>
+            <p>Get personalized hair advice anytime</p>
+        </div>
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">💇‍♀️</div>
+                <div>
+                    <h3>Style Advisor AI</h3>
+                    <div style="font-size: 0.85rem; color: #666;">● Online Now</div>
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">Hi! I'm your virtual stylist. I can help with:</div>
+                <div class="message bot">• Choosing the right cut for your face shape<br>• Colour recommendations<br>• Pricing & bookings<br>• Hair care advice</div>
+                <div class="message bot">What would you like to know?</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Ask about styles, colours, prices...">
+                <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="section-title">
+            <h2>AI <span>Voice Receptionist</span></h2>
+        </div>
+        <div class="voice-section">
+            <div class="voice-visual">📞</div>
+            <h3>Book by Phone, 24/7</h3>
+            <p>Our AI receptionist never misses a booking inquiry</p>
+            <div class="voice-features">
+                <div class="voice-feature">
+                    <div style="font-size: 2rem;">🕐</div>
+                    <h4>Always On</h4>
+                    <p>Even when we're closed</p>
+                </div>
+                <div class="voice-feature">
+                    <div style="font-size: 2rem;">📅</div>
+                    <h4>Smart Booking</h4>
+                    <p>Auto-schedules appointments</p>
+                </div>
+                <div class="voice-feature">
+                    <div style="font-size: 2rem;">💬</div>
+                    <h4>Consultations</h4>
+                    <p>Pre-booking questions</p>
+                </div>
+                <div class="voice-feature">
+                    <div style="font-size: 2rem;">📝</div>
+                    <h4>Details Captured</h4>
+                    <p>Message & booking info</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="booking" class="section">
+        <div class="booking-section">
+            <div class="section-title">
+                <h2>Book <span>Appointment</span></h2>
+                <p>We'll confirm within 24 hours</p>
+            </div>
+            <form class="booking-form" onsubmit="handleBooking(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Name *</label>
+                        <input type="text" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone *</label>
+                        <input type="tel" name="phone" required placeholder="07xxx xxxxxx">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="your@email.com">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Service *</label>
+                        <select name="service" required>
+                            <option value="">Select...</option>
+                            <option value="cut">Cut & Style</option>
+                            <option value="colour">Colour</option>
+                            <option value="balayage">Balayage</option>
+                            <option value="highlights">Highlights</option>
+                            <option value="keratin">Keratin Treatment</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Stylist</label>
+                        <select name="stylist">
+                            <option value="any">Any Stylist</option>
+                            <option value="sarah">Sarah (Senior)</option>
+                            <option value="jess">Jess (Colour Specialist)</option>
+                            <option value="mike">Mike (Cuts)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Preferred Date</label>
+                    <input type="date" name="date">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Book Now</button>
+            </form>
+        </div>
+    </section>
+    
+    <section id="contact" class="section">
+        <div class="section-title">
+            <h2>Find <span>Us</span></h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>Address</h3>
+                <p>127 Shepherd's Bush Road<br>London W12 8ND</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3>Phone</h3>
+                <p>020 8743 5092</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3>Email</h3>
+                <p>book@shepherdsbushhair.co.uk</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">🕐</div>
+                <h3>Hours</h3>
+                <p>Tue-Fri: 9am - 8pm<br>Sat: 9am - 6pm</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="logo" style="justify-content: center; margin-bottom: 1rem; color: white;">Shepherd's Bush <span>Hair</span></div>
+        <p>Award-Winning Salon | Wella Professionals | Olaplex Salon</p>
+        <p style="margin-top: 1rem;">© 2026 Shepherd's Bush Hair. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const responses = {
+            'cut': "Our cuts start from £55 for women and £30 for men. All cuts include consultation, wash, cut and blow-dry. Book with Sarah or Mike for cuts.",
+            'colour': "Full colour from £75, highlights from £65, balayage from £120. All colour appointments include a complimentary treatment. Jess specializes in colour.",
+            'balayage': "Balayage costs £120 and gives a beautiful, natural sun-kissed look. It grows out beautifully. Book with Jess for best results.",
+            'keratin': "Keratin treatment is £150 and eliminates frizz for 3-4 months. Hair will be straight, smooth and easy to manage. Recommended every 4 months.",
+            'price': "Prices: Women's cut £55, Men's cut £30, Full colour £75, Highlights from £65, Balayage £120, Keratin £150, Treatment £25.",
+            'booking': "Book online, call 020 8743 5092, or DM us on Instagram. We confirm within 24 hours. £20 deposit required for new colour clients.",
+            'products': "We stock Kerastase, Olaplex, Wella, and GHD. Ask for product recommendations during your visit!",
+            'consultation': "We offer free 15-minute consultations. Great for big changes or if you're unsure what you want. Just mention when booking."
+        };
+        
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const msg = input.value.trim().toLowerCase();
+            
+            if (!msg) return;
+            
+            addMessage(input.value, 'user');
+            input.value = '';
+            
+            let response = "Thanks! Call 020 8743 5092 for immediate booking or use our form.";
+            
+            for (const [key, value] of Object.entries(responses)) {
+                if (msg.includes(key)) {
+                    response = value;
+                    break;
+                }
+            }
+            
+            setTimeout(() => addMessage(response, 'bot'), 500);
+        }
+        
+        function addMessage(text, sender) {
+            const chatMessages = document.getElementById('chatMessages');
+            const div = document.createElement('div');
+            div.className = `message ${sender}`;
+            div.innerHTML = text;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function handleBooking(e) {
+            e.preventDefault();
+            alert('Thank you! We will confirm your appointment within 24 hours.');
+        }
+        
+        function filterServices(category) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.querySelectorAll('.service-card').forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
+</body>
+</html>
